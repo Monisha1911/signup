@@ -21,6 +21,11 @@ export class AuthService {
     let url1 = "http://localhost:5000/api/Authentication/Login";
     console.log(data)
     return this.http.post(url1, data);
+
+  }
+
+  getToken(){
+    return sessionStorage.getItem('token')
   }
 
 

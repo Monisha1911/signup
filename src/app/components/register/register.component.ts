@@ -16,6 +16,7 @@ import {NgToastService} from 'ng-angular-popup';
 export class RegisterComponent implements OnInit {
   hide = true;
   registerForm!: FormGroup;
+  
 
 
 
@@ -25,11 +26,20 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = new FormGroup({
       userName : new FormControl('',[Validators.required, Validators.required]),
-      email : new FormControl('',[Validators.required, Validators.email]),
-      password : new FormControl('',[Validators.required,Validators.minLength(6)])
-    }
-    );
+      email : new FormControl('',[ Validators.email]),
+      password : new FormControl('',[Validators.required,Validators.minLength(6)]),
+      confirmpassword : new FormControl('',[Validators.required,Validators.minLength(6)]),
+ 
+    },
+    {
+      
+    })
   }
+
+  get f(){
+    return this.registerForm.controls;
+  }
+
 
 
   getformdata(data){
@@ -52,27 +62,28 @@ export class RegisterComponent implements OnInit {
 
     }))
 
-    /* this.authservice.postData(data)
-    .subscribe(res=>{
-      alert("Signup Succesfull");
-      this.registerForm.reset();
-      this.router.navigate(['login']); 
-    },err=>{
-      console.log(err)
-     // alert("something went wrong")
-    })
-    console.log(data); */
+   
     
   }
 
-  // onSubmit(data){
-  //   this.http.post('http://localhost:5000/api/Authentication/Register',data).subscribe((result)=>{
-  //     console.warn("result",result)
-  //   })
-  //   console.warn(data);
+  Mustmatch(password:any,confirmpassword:any){
+    return (formGroup: FormGroup)=>{
+      const passwordcontrol=formGroup.controls[password];
+      const confirmpasswordcontrol=formGroup.controls[confirmpassword];
 
-  // }
+      if(confirmpasswordcontrol.errors && !confirmpasswordcontrol.errors['Mustmatch']){
+        return;
+      }
 
+      if(passwordcontrol.value!==confirmpasswordcontrol.value){
+        confirmpasswordcontrol.setErrors({Mustmatch:true});
+      }else{
+        confirmpasswordcontrol.setErrors(null);
+
+      }
+
+    }
+  }
  
 
 }
