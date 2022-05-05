@@ -43,16 +43,11 @@
                     </mat-form-field>
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>confirmpassword</mat-label>
-                        <input formControlName="confirmpassword" id="confirmpassword" type="password" class="form-control">
-                        <div *ngIf="f.confirmpassword.touched && f.confirmpassword.invalid" class="alert alert-danger">
-                            <div *ngIf="f.confirmpassword.errors.required">Password is required.</div>
-                            <div *ngIf="f.confirmpassword.errors.Mustmatch">Password and Confirm Password must be match.</div>
-                        </div>
-                        <!-- <input formControlName="confirmpassword" matInput [type]="hide ? 'confirmpassword' : 'text'" required />
+                        <input formControlName="confirmpassword" matInput [type]="hide ? 'confirmpassword' : 'text'" required />
                         <button mat-icon-button matSuffix (click)="hide =!hide" [attr.aria-label]="'Hide Password'"
                             [attr.aira-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </button> -->
+                        </button>
 
                     </mat-form-field>
                 </div>
