@@ -1,0 +1,53 @@
+<mat-card>
+    <mat-card-content>
+        <!-- <div class="header">
+            <h2>REGISTER</h2>
+        </div> -->
+        <form [formGroup]="registerForm" (ngSubmit)="getformdata(registerForm)" >
+            <div class="box">
+            <h1>REGISTER</h1>
+                <div class="userName-input">
+                    <mat-form-field class="full-width" apperance="outline">
+                        <mat-label>userName</mat-label>
+                        <input formControlName="userName" matInput required />
+                        <!-- <mat-error *ngIf="loginForm.get('userName').errors?.required">
+                            Required userName address
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div class="email-input">
+                    <mat-form-field class="full-width" apperance="outline">
+                        <mat-label>email</mat-label>
+                        <input formControlName="email" matInput required />
+                        <!-- <mat-error *ngIf="loginForm.get('userName').errors?.required">
+                            Required userName address
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div>
+                    <!-- <span class="aLink">Forgot password</span> -->
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>password</mat-label>
+                        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required />
+                        <div id="passwordHelp" class="form-text">First letter should be caps,Special char & number</div>
+                        <button mat-icon-button matSuffix (click)="hide =!hide" [attr.aria-label]="'Hide Password'"
+                            [attr.aira-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <!-- <mat-error *ngIf="loginForm.get('password').errors?.required">
+                            Required password
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button routerLink="../login" color="btn"> Login </button>&nbsp;
+                    <button type="submit" class="btn2">Register</button>
+                    <!-- <a routerLink="../login" class="btn btn-link">Cancel</a> -->
+                </div>
+            </div>
+            
+
+
+        </form>
+    </mat-card-content>
+</mat-card>

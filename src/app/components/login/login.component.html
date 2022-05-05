@@ -1,0 +1,40 @@
+<mat-card>
+    <mat-card-content>
+        <div class="header">
+            <h2>LOGIN</h2>
+
+        </div>
+        <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+            <div class="userName-input">
+                <mat-form-field class="full-width" apperance="outline">
+                    <mat-label>userName</mat-label>
+                    <input formControlName="userName" matInput required />
+                    <!-- <mat-error *ngIf="loginForm.get('userName').errors?.required">
+                        Required userName address
+                    </mat-error> -->
+                </mat-form-field>
+            </div>
+            <div>
+                <!-- <span class="aLink">Forgot password</span> -->
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>password</mat-label>
+                    <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required />
+                    <button mat-icon-button matSuffix (click)="hide =!hide" [attr.aria-label]="'Hide Password'"
+                        [attr.aira-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <!-- <mat-error *ngIf="loginForm.get('password').errors?.required">
+                        Required password
+                    </mat-error> -->
+                </mat-form-field>
+            </div>
+            <div>
+                <!-- <button mat-flat-button color="Primary"> Login </button> -->
+                <button  class="btn btn-primary">Login</button>
+                <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+            </div>
+
+
+        </form>
+    </mat-card-content>
+</mat-card>
