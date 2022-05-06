@@ -5,7 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Services/auth.service';
-import {NgToastService} from 'ng-angular-popup';
+import { NgToastService } from 'ng-angular-popup';
 import { MustMatch } from 'src/app/Helpers/must-match.validator';
 
 
@@ -17,13 +17,17 @@ import { MustMatch } from 'src/app/Helpers/must-match.validator';
 export class RegisterComponent implements OnInit {
   hide = true;
   registerForm!: FormGroup;
-  
-  
+  submitted = false;
+  formGroup: any;
+  // confirmpassword: any;
+
+  constructor(private router: Router, private http: HttpClient, private authservice: AuthService
+    , private toast: NgToastService,) { }
 
 
 
-  constructor(private router:Router, private http:HttpClient,private authservice:AuthService
-    ,private toast:NgToastService,) { }
+
+
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -33,57 +37,61 @@ export class RegisterComponent implements OnInit {
       confirmpassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
 
     },
-     {validators: MustMatch('password', 'confirmpassword') }
+      { validators: MustMatch('password', 'confirmpassword') }
     )
   }
 
-  get f(){
+  get f() {
     return this.registerForm.controls;
   }
 
 
-  getformdata(data){
+  getformdata(data) {
+
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+
     console.log(this.registerForm.value)
-    this.authservice.postData(this.registerForm.value).subscribe((res)=>{
+    this.authservice.postData(this.registerForm.value).subscribe((res) => {
       console.log(res);
-      if(res.status=="error"){
-        
+      if (res.status == "error") {
+
       }
-      
+
       //alert("Signup Succesfull");
       //this.toast.success(detail:"Signup Succesfull")
-      this.toast.success({detail:"Success Message",summary:"Register Succesfull",duration:2000})
+      this.toast.success({ detail: "Success Message", summary: "Register Succesfull", duration: 2000 })
 
       this.registerForm.reset();
       this.router.navigate(['login']);
-    },(error=>{
+    }, (error => {
       console.log(error)
-      this.toast.error({detail:"Error Message",summary:error.error.message,duration:3000})
+      this.toast.error({ detail: "Error Message", summary: error.message, duration: 3000 })
 
     }))
 
-   
-    
+
+
   }
 
-  // Mustmatch(password:any,confirmpassword:any){
-  //   return (formGroup: FormGroup)=>{
-  //     const passwordcontrol=formGroup.controls[password];
-  //     const confirmpasswordcontrol=formGroup.controls[confirmpassword];
 
-  //     if(confirmpasswordcontrol.errors && !confirmpasswordcontrol.errors['Mustmatch']){
-  //       return;
-  //     }
+  /* Shorthands for form controls (used from within template) */
+  get password() { return this.formGroup.get('password'); }
+  get confirmpassword() { return this.formGroup.get('confirmpassword'); }
 
-  //     if(passwordcontrol.value!==confirmpasswordcontrol.value){
-  //       confirmpasswordcontrol.setErrors({Mustmatch:true});
-  //     }else{
-  //       confirmpasswordcontrol.setErrors(null);
-  //     }
-
-  //   }
-  // }
- 
+  /* Called on each input in either password field */
+  onPasswordInput() {
+    if (this.formGroup.hasError('passwordMismatch'))
+      this.confirmpassword.setErrors([{ 'passwordMismatch': true }]);
+    else
+      this.confirmpassword.setErrors(null);
+  }
 
 }
 
