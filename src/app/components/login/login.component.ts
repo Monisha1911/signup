@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators,FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 import { NgToastService } from 'ng-angular-popup';
@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
       console.log(res);
       const user = res;
       if (user) {
-        
         sessionStorage.setItem('token', user.token);
         // localStorage.setItem('userName',user.userName);
         this.toast.success({ detail: "Success Message", summary: "login Succesfull", duration: 2000 })
@@ -48,11 +47,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['dashboard']);
       }
     }, (error => {
-      this.toast.error({ detail: "Error Message", summary: "Login Failed, try again later", duration: 3000 })
-
+      this.toast.error({ detail: "Error Message", summary: error.status, duration: 3000 })
     }))
-
-
   }
 
 }

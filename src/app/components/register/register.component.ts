@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Services/auth.service';
 import {NgToastService} from 'ng-angular-popup';
+import { MustMatch } from 'src/app/Helpers/must-match.validator';
 
 
 @Component({
@@ -17,29 +18,28 @@ export class RegisterComponent implements OnInit {
   hide = true;
   registerForm!: FormGroup;
   
+  
 
 
 
   constructor(private router:Router, private http:HttpClient,private authservice:AuthService
-    ,private toast:NgToastService) { }
+    ,private toast:NgToastService,) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
-      userName : new FormControl('',[Validators.required, Validators.required]),
-      email : new FormControl('',[ Validators.email]),
-      password : new FormControl('',[Validators.required,Validators.minLength(6)]),
-      confirmpassword : new FormControl('',[Validators.required,Validators.minLength(6)]),
- 
+      userName: new FormControl('', [Validators.required, Validators.required]),
+      email: new FormControl('', [Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      confirmpassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
+
     },
-    {
-      
-    })
+     {validators: MustMatch('password', 'confirmpassword') }
+    )
   }
 
   get f(){
     return this.registerForm.controls;
   }
-
 
 
   getformdata(data){
@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['login']);
     },(error=>{
       console.log(error)
-      this.toast.error({detail:"Error Message",summary:"Message",duration:3000})
+      this.toast.error({detail:"Error Message",summary:error.error.message,duration:3000})
 
     }))
 
@@ -66,26 +66,27 @@ export class RegisterComponent implements OnInit {
     
   }
 
-  Mustmatch(password:any,confirmpassword:any){
-    return (formGroup: FormGroup)=>{
-      const passwordcontrol=formGroup.controls[password];
-      const confirmpasswordcontrol=formGroup.controls[confirmpassword];
+  // Mustmatch(password:any,confirmpassword:any){
+  //   return (formGroup: FormGroup)=>{
+  //     const passwordcontrol=formGroup.controls[password];
+  //     const confirmpasswordcontrol=formGroup.controls[confirmpassword];
 
-      if(confirmpasswordcontrol.errors && !confirmpasswordcontrol.errors['Mustmatch']){
-        return;
-      }
+  //     if(confirmpasswordcontrol.errors && !confirmpasswordcontrol.errors['Mustmatch']){
+  //       return;
+  //     }
 
-      if(passwordcontrol.value!==confirmpasswordcontrol.value){
-        confirmpasswordcontrol.setErrors({Mustmatch:true});
-      }else{
-        confirmpasswordcontrol.setErrors(null);
+  //     if(passwordcontrol.value!==confirmpasswordcontrol.value){
+  //       confirmpasswordcontrol.setErrors({Mustmatch:true});
+  //     }else{
+  //       confirmpasswordcontrol.setErrors(null);
+  //     }
 
-      }
-
-    }
-  }
+  //   }
+  // }
  
 
 }
+
+
 
 

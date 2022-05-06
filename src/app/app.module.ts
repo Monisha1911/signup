@@ -17,6 +17,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgToastModule } from 'ng-angular-popup';
 import {TokenInterceptorService} from './Services/token-interceptor.service';
 import { AuthService } from './Services/auth.service';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
+
+
 
 
 @NgModule({
@@ -39,6 +45,11 @@ import { AuthService } from './Services/auth.service';
     HttpClientModule,
     NgToastModule,
     ToastrModule.forRoot(), 
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
   ],
   providers: [AuthService,{
     provide: HTTP_INTERCEPTORS,

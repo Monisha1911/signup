@@ -1,5 +1,5 @@
 mat-card{
-    background-color: rgb(244, 241, 251);
+    background-color:white;
     max-width: 600px;
     margin:2em auto;
     text-align: center;
@@ -26,4 +26,28 @@ mat-card{
     float: right;
     padding-right: 60px;
     text-decoration: none;
+}
+.button{
+    background-color:green;
+    border:none;
+    color:white;
+    padding:10px 42px;
+    text-align:center;
+    text-decoration:none;
+    display:inline-block;
+    font-size:16px;
+    margin:5px 2px;
+    cursor:pointer;
+}
+.b1{
+    background-color:green;
+    border:none;
+    color:white;
+    padding:10px 40px;
+    text-align:center;
+    text-decoration:none;
+    display:inline-block;
+    font-size:16px;
+    margin:4px 2px;
+    cursor:pointer;
 }

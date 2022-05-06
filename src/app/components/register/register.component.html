@@ -5,7 +5,7 @@
         </div> -->
         <form [formGroup]="registerForm" (ngSubmit)="getformdata(registerForm)">
             <div class="box">
-                <h1>REGISTER</h1>
+                <h1 style="text-align:center;background-color:green;color:white;padding:25px">REGISTER</h1>
                 <div class="userName-input">
                     <mat-form-field class="full-width" apperance="outline">
                         <mat-label>userName</mat-label>
@@ -34,26 +34,35 @@
                             [attr.aira-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
-                        <div id="passwordHelp" class="form-text">First letter should be caps and a Special char & number
-                        </div>
+                        <!-- <div id="passwordHelp" class="form-text">First letter should be caps and a Special char & number
+                        </div> -->
 
                         <!-- <mat-error *ngIf="loginForm.get('password').errors?.required">
                             Required password
                         </mat-error> -->
                     </mat-form-field>
+                        <!-- <div id="passwordHelp" class="form-text">First letter should be caps and a Special char & number
+                            </div> -->
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>confirmpassword</mat-label>
                         <input formControlName="confirmpassword" matInput [type]="hide ? 'confirmpassword' : 'text'" required />
                         <button mat-icon-button matSuffix (click)="hide =!hide" [attr.aria-label]="'Hide Password'"
                             [attr.aira-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </button>
 
+                        </button>
+                        
+                          <!-- <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div> -->
+                          <div *ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>
+                          <!-- <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div> -->
+                          <!-- <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div> -->
                     </mat-form-field>
                 </div>
                 <div>
-                    <button routerLink="../login" color="btn"> Login </button>&nbsp;
-                    <button type="submit" class="btn2">Register</button>
+                    <button routerLink="../login" color="btn" class="b1"> Login </button>&nbsp;
+                    <button type="submit" class="b2">Register</button>
+                    <!-- <button routerLink="../login" color="btn"> Login </button>&nbsp;
+                    <button type="submit" class="btn2">Register</button> -->
                     <!-- <a routerLink="../login" class="btn btn-link">Cancel</a> -->
                 </div>
             </div>
