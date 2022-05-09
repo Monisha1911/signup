@@ -72,7 +72,7 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['login']);
     }, (error => {
       console.log(error)
-      this.toast.error({ detail: "Error Message", summary: error.message, duration: 3000 })
+      this.toast.error({ detail: "Error message", summary: error.error.message, duration: 3000 })
 
     }))
 

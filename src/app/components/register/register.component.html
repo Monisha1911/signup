@@ -10,6 +10,8 @@
                     <mat-form-field class="full-width" apperance="outline">
                         <mat-label>userName</mat-label>
                         <input formControlName="userName" matInput required />
+                        <mat-error>userName is required</mat-error>
+
                         <!-- <mat-error *ngIf="loginForm.get('userName').errors?.required">
                             Required userName address
                         </mat-error> -->
@@ -36,7 +38,7 @@
                             [attr.aira-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
-                        <mat-error>Password Should Contain One Uppercase,NUmbers And Special Symbol</mat-error>
+                        <mat-error>Password Should Contain One Uppercase,Numbers And Special Symbol</mat-error>
 
                         <!-- <div id="passwordHelp" class="form-text">First letter should be caps and a Special char & number
                         </div> -->
@@ -49,6 +51,11 @@
                         <mat-label>confirmpassword</mat-label>
 
                         <input matInput type="password" placeholder="confirmpassword" formControlName="confirmpassword" (input)="onPasswordInput()">
+                        <button mat-icon-button matSuffix (click)="hide =!hide" [attr.aria-label]="'Hide Password'"
+                            [attr.aira-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+                        </button>
                         <mat-error>password is required</mat-error>
                         <!-- <mat-error *ngIf="confirmpassword.hasError('required')">Please confirm your password</mat-error>
                         <mat-error *ngIf="confirmpassword.invalid && !confirmpassword.hasError('required')">Passwords don't match</mat-error> -->

@@ -20,6 +20,8 @@ import { AuthService } from './Services/auth.service';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { CoursesComponent } from './components/courses/courses.component';
+import { MaterialComponent } from './components/material/material.component';
 
 
 
@@ -30,7 +32,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    CoursesComponent,
+    MaterialComponent
   ],
   imports: [
     BrowserModule,
