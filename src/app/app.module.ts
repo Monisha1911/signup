@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import {MatIconModule} from '@angular/material/icon';
 import { RegisterComponent } from './components/register/register.component';
@@ -22,10 +22,13 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CoursesComponent } from './components/courses/courses.component';
 import { MaterialComponent } from './components/material/material.component';
-
-
-
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './components/dialog/dialog.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -34,13 +37,14 @@ import { MaterialComponent } from './components/material/material.component';
     RegisterComponent,
     DashboardComponent,
     CoursesComponent,
-    MaterialComponent
+    MaterialComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    
+    MatDialogModule,
     ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
@@ -54,6 +58,13 @@ import { MaterialComponent } from './components/material/material.component';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    FormsModule
+
   ],
   providers: [AuthService,{
     provide: HTTP_INTERCEPTORS,

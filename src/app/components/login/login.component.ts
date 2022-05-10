@@ -27,14 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    // let auth_token = "asasa21212....";
-
-    // const headers = new HttpHeaders({
-    //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${auth_token}`
-    //   });
-
-    // const requestOptions = { headers: headers };
+    
     console.log(this.loginForm.value)
     this.authservice.loginData(this.loginForm.value).subscribe((res) => {
       console.log(res);
