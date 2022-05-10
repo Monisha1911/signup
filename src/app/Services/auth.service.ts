@@ -28,5 +28,21 @@ export class AuthService {
     return sessionStorage.getItem('token')
   }
 
+  postCourse(data:any){
+    return this.http.post<any>("http://localhost:3000/courseList/",data);
+  }
+
+  getcourse(){
+    return this.http.get<any>("http://localhost:3000/courseList/");
+  }
+
+  putcourse(data:any,id : number){
+    return this.http.put<any>("http://localhost:3000/courseList/" + id,data)
+  }
+
+  deletecourse(id:number){
+    return this.http.delete<any>("http://localhost:3000/courseList/" + id);
+  }
+
 
 }

@@ -15,14 +15,14 @@
 
         <mat-form-field appearance="outline">
             <mat-label>Coursestartdate</mat-label>
-            <input matInput [matDatepicker]="picker">
+            <input formControlName="Coursestartdate" matInput [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Format</mat-label>
-            <mat-select placeholder="Format">
+            <mat-select formControlName="Format" placeholder="Format">
                 <mat-option value="Daily Format">Daily Format</mat-option>
                 <mat-option value="Weekly Format">Weekly Format</mat-option>
                 <mat-option value="Monthly Format">Monthly Format</mat-option>
@@ -32,19 +32,19 @@
 
         <mat-form-field appearance="outline">
             <mat-label>Price</mat-label>
-            <input matInput type="number" placeholder="amount" />
+            <input formControlName="Price" matInput type="number" placeholder="amount" />
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Description</mat-label>
-            <input matInput type="text" placeholder="" />
+            <input formControlName="Description" matInput type="text" placeholder="" />
 
         </mat-form-field>
 
         <label for="">
             <h2>Level</h2>
         </label>
-        <mat-radio-group class="example-radio-group">
+        <mat-radio-group formControlName="Level" class="example-radio-group">
             <mat-radio-button class="example-radio-button" *ngFor="let level of levelList" [value]="level">
                 {{level}}
             </mat-radio-button>
@@ -54,7 +54,7 @@
 
 <div mat-dialog-action [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button style="margin-left: 8px;" mat-raised-button color="primary" mat-dialog-close>Save</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addCourse()">{{actionBtn}}</button>
 
 
 </div>

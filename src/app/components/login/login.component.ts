@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     
     console.log(this.loginForm.value)
     this.authservice.loginData(this.loginForm.value).subscribe((res) => {
-      console.log(res);
+      console.log(res); 
       const user = res;
       if (user) {
         sessionStorage.setItem('token', user.token);

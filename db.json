@@ -1,0 +1,41 @@
+{
+  "courseList": [
+    {
+      "Coursecategory": "Angular",
+      "Coursestartdate": "2022-05-11T18:30:00.000Z",
+      "Format": "Weekly Format",
+      "Price": 2500,
+      "Description": "course is easy",
+      "Level": "Intermediate",
+      "id": 2
+    },
+    {
+      "Coursecategory": "C++",
+      "Coursestartdate": "2022-05-10T18:30:00.000Z",
+      "Format": "Monthly Format",
+      "Price": 3000,
+      "Description": "easy to Code",
+      "Level": "Export",
+      "id": 8
+    },
+    {
+      "Coursecategory": "C",
+      "Coursestartdate": "2022-05-10T18:30:00.000Z",
+      "Format": "Monthly Format",
+      "Price": 3000,
+      "Description": "easy to Code",
+      "Level": "Export",
+      "id": 9
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { validateBasis } from '@angular/flex-layout';
-import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/Services/auth.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog',
@@ -9,24 +11,73 @@ import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 })
 export class DialogComponent implements OnInit {
 
-  levelList = ["Beginner" ,"Intermediate", "Export"];
-  courseForm !:FormGroup;
+  levelList = ["Beginner", "Intermediate", "Export"];
+  courseForm !: FormGroup;
+  actionBtn: string = "Save"
 
-  constructor(private formBuilder : FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private authservice: AuthService,
+    @Inject(MAT_DIALOG_DATA) public editData: any,
+    private dialogRef: MatDialogRef<DialogComponent>,
+
+  ) { }
 
   ngOnInit(): void {
     this.courseForm = this.formBuilder.group({
-      Coursecategory :['',Validators.required],
-      Coursestartdate:['',Validators.required],
-      Format:['',Validators.required],
-      Price:['',Validators.required],
-      Description:['',Validators.required],
-      Level:['',Validators.required],
+      Coursecategory: ['', Validators.required],
+      Coursestartdate: ['', Validators.required],
+      Format: ['', Validators.required],
+      Price: ['', Validators.required],
+      Description: ['', Validators.required],
+      Level: ['', Validators.required],
 
+    });
 
+    if (this.editData) {
+      this.actionBtn = "Update";
+      this.courseForm.controls['Coursecategory'].setValue(this.editData.Coursecategory);
+      this.courseForm.controls['Coursestartdate'].setValue(this.editData.Coursestartdate);
+      this.courseForm.controls['Format'].setValue(this.editData.Format);
+      this.courseForm.controls['Price'].setValue(this.editData.Price);
+      this.courseForm.controls['Description'].setValue(this.editData.Description);
+      this.courseForm.controls['Level'].setValue(this.editData.Level);
 
+    }
 
-    })
+  }
+  addCourse() {
+    // if (this.editData) {
+     
+    // } else {
+    //   this.updatecourse()
+    // }
+    if (this.courseForm.valid) {
+      this.authservice.postCourse(this.courseForm.value)
+        .subscribe({
+          next: (res) => {
+            alert("course added successfully");
+            this.courseForm.reset();
+            this.dialogRef.close('save');
+          },
+          error: () => {
+            alert("Error while adding the course")
+          }
+        })
+    }
+  }
+
+  updatecourse() {
+    this.authservice.putcourse(this.courseForm.value, this.editData.id)
+      .subscribe({
+        next: (res) => {
+          alert("course updated successfully");
+          this.courseForm.reset();
+          this.dialogRef.close('update');
+        },
+        error: () => {
+          alert("Error while updating the record  !!");
+        }
+      })
   }
 
 }
