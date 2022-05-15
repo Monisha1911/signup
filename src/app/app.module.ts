@@ -32,6 +32,13 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { ProfileComponent } from './profile/profile.component';
+import {RouterModule} from '@angular/router';
+import {MatMenuModule} from '@angular/material/menu';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+// import { DemoMaterialModule } from "@angular/material-module"
+// import { profile } from 'console';
+// import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -41,10 +48,16 @@ import {MatSortModule} from '@angular/material/sort';
     DashboardComponent,
     CoursesComponent,
     MaterialComponent,
-    DialogComponent
+    DialogComponent,
+    ProfileComponent,
+    
+    // ProfileComponent
   ],
+  
   imports: [
     BrowserModule,
+    MatMenuModule,
+    // DemoMaterialModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
@@ -69,14 +82,19 @@ import {MatSortModule} from '@angular/material/sort';
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    RouterModule
+    
 
   ],
+  entryComponents: [ProfileComponent],
   providers: [AuthService,{
     provide: HTTP_INTERCEPTORS,
     useClass:TokenInterceptorService,
     multi: true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,ProfileComponent]
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

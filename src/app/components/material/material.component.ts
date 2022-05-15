@@ -10,6 +10,7 @@ export class MaterialComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

@@ -54,9 +54,6 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
-
     console.log(this.registerForm.value)
     this.authservice.postData(this.registerForm.value).subscribe((res) => {
       console.log(res);
@@ -72,7 +69,7 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['login']);
     }, (error => {
       console.log(error)
-      this.toast.error({ detail: "Error message", summary: error.error.message, duration: 3000 })
+      this.toast.error({ detail: "Error message", summary: error.message, duration: 3000 })
 
     }))
 
@@ -93,6 +90,7 @@ export class RegisterComponent implements OnInit {
       this.confirmpassword.setErrors(null);
   }
 
+  
 }
 
 

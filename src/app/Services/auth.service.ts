@@ -21,8 +21,19 @@ export class AuthService {
     let url1 = "http://localhost:5000/api/Authentication/Login";
     console.log(data)
     return this.http.post(url1, data);
-
   }
+  
+  // getUserData(data:any) :Observable<any> {
+  //   let url2 = "http://localhost:5000/api/Authentication";
+  //   console.log(data)
+  //   return this.http.get(url2,data);
+    
+  // }
+
+  // getUserData(){
+  //   this.http.get<any>(`http://localhost:5000/api/Authentication`)
+  // }
+
 
   getToken(){
     return sessionStorage.getItem('token')

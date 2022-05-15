@@ -4,8 +4,10 @@
             <h2>REGISTER</h2>
         </div> -->
         <form [formGroup]="registerForm" (ngSubmit)="getformdata(registerForm)">
+        
             <div class="box">
-                <h1 style="text-align:center;background-color:green;color:white;padding:25px">REGISTER</h1>
+               <h1 class="register">REGISTER</h1>
+               <!-- <mat-toolbar class="register" style="text-align:center"><h1 style="text-align:center;color:white">REGISTER</h1></mat-toolbar> -->
                 <div class="userName-input">
                     <mat-form-field class="full-width" apperance="outline">
                         <mat-label>userName</mat-label>

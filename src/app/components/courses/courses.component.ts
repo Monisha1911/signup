@@ -7,6 +7,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { AuthService } from 'src/app/Services/auth.service';
+import { NgToastService } from 'ng-angular-popup';
+
 
 
 @Component({
@@ -24,7 +26,7 @@ export class CoursesComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
-  constructor(private observer: BreakpointObserver, private dialog : MatDialog, private authservice : AuthService) { }
+  constructor(private observer: BreakpointObserver, private dialog : MatDialog, private authservice : AuthService,private toast: NgToastService) { }
 
   ngOnInit(): void {
     this.getAllProducts();
@@ -60,7 +62,9 @@ export class CoursesComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort
       },error:(err)=>{
-        alert("Error while fetching the Records!!")
+        // alert("Error while fetching the Records!!");
+      this.toast.error({ detail: "Error Message", summary: "Error while fetching the Records!!", duration: 3000 })
+
       }
     })
   }
@@ -80,11 +84,15 @@ export class CoursesComponent implements OnInit {
     this.authservice.deletecourse(id)
     .subscribe({
       next:(res)=>{
-        alert("product deleted successfully");
+        // alert("product deleted successfully");
+        this.toast.success({ detail: "Success Message", summary: "product deleted successfully", duration: 2000 })
+
         this.getAllProducts();
       },
       error:()=>{
-        alert("Error while deleting the course!!")
+        // alert("Error while deleting the course!!");
+      this.toast.error({ detail: "Error Message", summary: "Error while deleting the Records!!", duration: 3000 })
+
       }
     })
   }
@@ -98,5 +106,22 @@ export class CoursesComponent implements OnInit {
     }
   }
 
+  myFunction(){
+    document.getElementById("myDropdown").classList.toggle("show");
+  
+    }
 
+
+}
+window.onclick = function (event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
 }

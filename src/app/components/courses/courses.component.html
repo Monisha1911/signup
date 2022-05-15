@@ -7,11 +7,35 @@
       close
     </mat-icon>
   </button>
-  Welcome
-  <button mat-button class="profile-button">
-    <mat-icon>person</mat-icon>
-    <span>Profile</span>
-  </button>
+  Learning Portal
+
+  <div class="example-menu-row" style="margin-left:1200px;">
+    <div style="margin-top: 35px;">
+      <button mat-stroked-button [matMenuTriggerFor]="menuHero" color="primary" ng-init>
+        <mat-icon>person</mat-icon>Profile
+      </button>
+      <mat-menu #menuHero="matMenu" class="uxg-user-profile">
+        <div class="uxg-menu-header">
+          <div class="uxg-avatar-hero-block">
+            <!-- <div class="uxg-avatar" >SM</div> -->
+            <h2 class="uxg-h6">Monisha</h2>
+            <span class="uxg-caption">monishasingamala@gmail.com</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="uxg-menu-footer">
+          <button mat-flat-button color="primary" dense>
+            <mat-icon>exit_to_app</mat-icon>
+            Logout
+          </button>
+          <button mat-button color="primary" dense>
+            View profile
+          </button>
+        </div>
+      </mat-menu>
+    </div>
+  </div>
+
   <button routerLink="/login" style="margin-left:auto;">Logout </button>
 </mat-toolbar>
 
@@ -21,16 +45,37 @@
       <mat-icon>library_books</mat-icon>
       <span>Courses</span>
     </button>
+    <button routerLink="/material" mat-button class="menu-button">
+      <mat-icon>books</mat-icon>
+      <span>Materials</span>
+    </button>
     <!-- <button mat-button class="menu-button">
           <mat-icon>person</mat-icon>
           <span>Profile</span>
         </button> -->
+
+
+
+    <div class="dropdown" style="margin-top:10px;">
+      <button (click)="myFunction()" class="dropbtn" style="margin-right:40px;">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </button>
+      <div id="myDropdown" class="dropdown-content">
+        <a href="#" routerLink="/profile">View Profile</a>
+        <a href="#" routerLink="/login">Logout</a>
+        <!-- <a href="#">Link 3</a> -->
+      </div>
+
+    </div>
+
+    <mat-divider></mat-divider>
     <button routerLink="/about" mat-button class="menu-button">
       <mat-icon>info</mat-icon>
       <span>About us</span>
     </button>
 
-    <mat-divider></mat-divider>
+
 
     <button mat-button class="menu-button">
       <mat-icon>help</mat-icon>
@@ -45,7 +90,7 @@
 
         <mat-icon>library_books</mat-icon>
 
-        <span>Learning Portal</span>
+        <span>Courses</span>
         <span class="example-spacer"></span>
         <button mat-raised-button color="warn" (click)="openDialog()">Add Course</button>
 
@@ -124,3 +169,22 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<!-- 
+<mat-toolbar class="footer">
+  <mat-icon>facebook</mat-icon><br><br><br>
+  <mat-icon>whatsapp</mat-icon><br>
+<p style="margin-left:auto;margin-right:auto;text-align:center">@Copyright 2022<br>Learning Portal:content and certificate management<br>All rights reserved.</p>
+</mat-toolbar> -->
+<mat-toolbar class="footer">
+  <p style="margin-top:50px;margin-bottom:100px;margin-left:auto;margin-right:auto;font-size:15px">
+    <mat-icon><a href="https://www.javatpoint.com/"><i class="fa fa-twitter"></i></a></mat-icon>
+
+    <mat-icon><a href="https://www.javatpoint.com/">facebook</a></mat-icon>
+    <mat-icon><a href="https://web.whatsapp.com/">whatsapp</a></mat-icon><br><i>@Copyright 2022<br>Learning
+      Portal:Content and Certificate Management<br>All rights reserved.</i>
+  </p>
+
+</mat-toolbar>
+<!-- <div class="footer">  
+  @Copyright  JavaTpoint 2020- All Right Reserved.   
+</div> -->

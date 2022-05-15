@@ -6,6 +6,19 @@ mat-card{
   max-height: 600px;
 }
 
+.register{
+  text-align:center;
+  background-color:rgb(31, 7, 153);
+  color:white;
+  padding:10px;
+  margin:0px
+  /* height:40px; */
+  /* width:597px; */
+  /* margin-left: 0px;
+  margin-right: 100px; */
+
+}
+
 .hearder{
   text-align: center;
 }
@@ -51,9 +64,9 @@ h1{
 .box{
   /* background:white; */
   /* width:300px; */
-  border-radius:6px;
+  border-radius:8px;
   margin: 0 auto 0 auto;
-  padding:0px 0px 70px 0px;
+  /* padding:0px 0px 70px 0px; */
  /* border: #2980b9 4px solid*/; 
 }
 
@@ -120,7 +133,7 @@ background:#3594D2;
 }
 
 .b1{
-  background-color:green;
+  background-color:rgb(31, 7, 153);
   border:none;
   color:white;
   padding:10px 40px;
@@ -133,7 +146,7 @@ background:#3594D2;
 }
 
 .b2{
-  background-color:green;
+  background-color:rgb(31, 7, 153);
   border:none;
   color:white;
   padding:10px 40px;

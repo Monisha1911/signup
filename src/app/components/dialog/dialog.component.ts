@@ -3,6 +3,8 @@ import { validateBasis } from '@angular/flex-layout';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NgToastService } from 'ng-angular-popup';
+
 
 @Component({
   selector: 'app-dialog',
@@ -15,7 +17,7 @@ export class DialogComponent implements OnInit {
   courseForm !: FormGroup;
   actionBtn: string = "Save"
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,private toast: NgToastService,
     private authservice: AuthService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
     private dialogRef: MatDialogRef<DialogComponent>,
@@ -55,12 +57,15 @@ export class DialogComponent implements OnInit {
       this.authservice.postCourse(this.courseForm.value)
         .subscribe({
           next: (res) => {
-            alert("course added successfully");
+            // alert("course added successfully");
+            this.toast.success({ detail: "Success Message", summary: "course added successfully", duration: 2000 });
             this.courseForm.reset();
             this.dialogRef.close('save');
           },
           error: () => {
-            alert("Error while adding the course")
+            // alert("Error while adding the course")
+            this.toast.error({ detail: "Error Message", summary: "Error while adding the course", duration: 3000 });
+
           }
         })
     }
@@ -70,12 +75,16 @@ export class DialogComponent implements OnInit {
     this.authservice.putcourse(this.courseForm.value, this.editData.id)
       .subscribe({
         next: (res) => {
-          alert("course updated successfully");
+          // alert("course updated successfully");
+          this.toast.success({ detail: "Success Message", summary: "course updated successfully", duration: 2000 });
+
           this.courseForm.reset();
           this.dialogRef.close('update');
         },
         error: () => {
-          alert("Error while updating the record  !!");
+          // alert("Error while updating the record  !!");
+          this.toast.error({ detail: "Error Message", summary: "Error while updating the course", duration: 3000 });
+
         }
       })
   }

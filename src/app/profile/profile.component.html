@@ -1,0 +1,59 @@
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="card" style="margin-top: 100px;">
+  <h1>Monisha</h1>
+  <p class="title">monishasingamala@gmail.com</p>
+  <a href="#"><i class="fa fa-dribbble"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-linkedin"></i></a>
+  <a href="#"><i class="fa fa-facebook"></i></a>
+  <p><button>Contact</button></p>
+</div> -->
+
+
+
+
+<!-- creating user Profile -->
+<form [formGroup]="Form" (ngSubmit)="onPrfSubmit()">
+<!-- <form> -->
+    <div class="row justify- content-center">
+        <div class="col-md-8 card shadow px-3 py-3">
+            <div class="row">
+                <h2 class="col">Profile</h2>
+                <div class="col m1-auto text-right">
+                    <button class="btn btn-success" type="button">
+                    <!-- routerLink="/profile" routerLinkActive="active" [queryparams]="{EditMode:true}" -->
+                    
+                        <i class="fa fa-pencil btn-sm"></i>
+                        Edit Profile
+                    </button>
+                </div>
+            </div>
+
+
+            <hr>
+            <div>EditMode: <span class="badge badge-danger">{{editMode}}</span> </div>
+            <hr>
+
+            <div class="form-group">
+                <label>userName</label>
+                <!-- <span>Monisha</span> -->
+                <input *ngIf="editMode" type="text" class="form-control" formControlName="name">
+            </div>
+
+            <div class="form-group">
+                <label>email</label>
+                <!-- <span>monisha@gmail.com</span> -->
+
+                <input *ngIf="editMode" type="text" class="form-control" formControlName="Email">
+            </div>
+
+            <div class="btn-row" *ngIf="editMode">
+                <button type="submit" class="btn btn-primary mr-2">Save Profile</button>
+                <button type="button" class="btn btn-outline-secondary" (click)="onDiscard()"> Discard </button>
+
+            </div>
+        </div>
+
+    </div>
+</form>

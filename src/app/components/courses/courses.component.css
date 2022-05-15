@@ -1,3 +1,11 @@
+.example-menu-row {
+  margin-bottom: 24px;
+}
+.mat-stroked-button.mat-primary {
+  color: #e4e6f0;
+}
+
+
 .example-spacer {
     flex: 1 1 auto;
     /* margin-top: 100px; */
@@ -11,15 +19,15 @@
 
 
 mat-toolbar {
-    background: green;
+    background: rgb(5, 7, 125);
     color: white;
 }
 
 mat-sidenav {
-    margin: 16px;
+    margin: 5px;
     width: 200px;
     border-right: none;
-    background: green;
+    background: rgb(5, 7, 125);
     color: white;
     border-radius: 10px;
     padding: 16px;
@@ -78,7 +86,7 @@ mat-divider {
 
 .mat-toolbar.mat-primary {
     max-width: 1250px;
-    background: #3f51b5;
+    background: rgb(74, 115, 239);
     color: #fff;
 }
 
@@ -96,3 +104,68 @@ table {
       max-width: 1200px;
       margin: 0 auto;
   }
+
+  .footer{
+    margin: 0px;
+    /* width:950px; */
+    border-radius: 0px;
+    padding: 100px;
+    text-align:center;
+    text-align-last: 10px;
+    margin-left:0px;
+    margin-right:0px
+  }
+
+
+  /* Dropdown Button */
+.dropbtn {
+    background-color: #080a75;
+    color: white;
+    /* padding: 16px; */
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;   
+  
+  }
+  
+  /* Dropdown button on hover & focus */
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #65dfeb;
+    min-width: 110px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd}
+  
+  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+  .show {display:block;}
+  
+  

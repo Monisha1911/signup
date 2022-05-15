@@ -28,19 +28,19 @@ mat-card{
     text-decoration: none;
 }
 .button{
-    background-color:green;
+    background-color:rgb(31, 7, 153);
     border:none;
     color:white;
-    padding:10px 42px;
+    padding:10px 40px;
     text-align:center;
     text-decoration:none;
     display:inline-block;
     font-size:16px;
-    margin:5px 2px;
+    margin:4px 2px;
     cursor:pointer;
 }
 .b1{
-    background-color:green;
+    background-color:rgb(31, 7, 153);
     border:none;
     color:white;
     padding:10px 40px;
