@@ -22,7 +22,8 @@
           <div class="uxg-avatar-hero-block">
             <!-- <div class="uxg-avatar" >SM</div> -->
             <h2 class="uxg-h6">{{fab.user}}</h2>
-            <span class="uxg-caption">monishasingamala@gmail.com</span>
+            <span class="uxg-caption">{{fab.email}}</span>
+            
           </div>
         </div>
         <mat-divider></mat-divider>
@@ -103,7 +104,7 @@
         <div style="margin-top:10px;">
           <mat-form-field appearance="standard">
             <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Angular" #input>
           </mat-form-field>
 
           <div class="mat-elevation-z8">

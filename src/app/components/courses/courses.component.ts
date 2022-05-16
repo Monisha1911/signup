@@ -65,11 +65,11 @@ export class CoursesComponent implements OnInit {
     this.authservice.getcourse()
     .subscribe({
       next:(res)=>{
+        console.log(res);
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort
       },error:(err)=>{
-        // alert("Error while fetching the Records!!");
       this.toast.error({ detail: "Error Message", summary: "Error while fetching the Records!!", duration: 3000 })
 
       }
