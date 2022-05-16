@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Register } from '../Model/register';
+import { map } from "rxjs/operators"; 
 
 @Injectable({
   providedIn: 'root'
@@ -58,11 +59,24 @@ export class AuthService {
   }
 
   putcourse(data:any,id : number){
-    return this.http.put<any>("http://localhost:3000/courseList/" + id,data)
+    return this.http.put<any>("https://localhost:5001/api/Authenticate/edit" + id,data)
   }
 
-  deletecourse(id:number){
-    return this.http.delete<any>("https://localhost:5001/api/Authenticate/delete Courses?Id=" + id);
+  // url5="https://localhost:5001/api/Authenticate/delete"
+
+  // deletecourse(course_Id){
+  //   return this.http.delete<any>(`${this.url5}/${course_Id}`);
+  // }
+
+  url6="https://localhost:5001/api/Authenticate/getcourses"
+  getCurrentCourse(course_Id){
+    return this.http.get(`${this.url6}/${course_Id}`)
+  }
+
+  deleteData(course_Id){
+    return this.http.delete('https://localhost:5001/api/Authenticate/delete Courses?Id='+course_Id)
+    
+    
   }
 
 

@@ -25,11 +25,17 @@
                         <input formControlName="email" matInput required />
                         <mat-error>Email should be given correctly</mat-error>
 
-                        <!-- <span *ngIf="f['email'] getError('emial')!=null">email is required</span> -->
-                        <!-- <mat-error *ngIf="f['email'] getError('email')!=null">Email is required</mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div class="role-input">
+                    <mat-form-field class="full-width" apperance="outline">
+                        <mat-label>RoleType</mat-label>
+                        <input formControlName="RoleType" matInput required />
+                        <mat-error>RoleType is required</mat-error>
 
                     </mat-form-field>
                 </div>
+
                 <div>
                     <!-- <span class="aLink">Forgot password</span> -->
                     <mat-form-field class="full-width" appearance="outline">

@@ -1,9 +1,14 @@
+import { RoleType } from "./role";
+
 export class Register {
-    userName: string;
-    email: string;
-    password: string;
+
+  userName: string;
+  email: string;
+  password: string;
   token: string;
-  user:Register;
+  user: Register;
+  // RoleType: string;
+  role:RoleType;
 }
 
 // <table >

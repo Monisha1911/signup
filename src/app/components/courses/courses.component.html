@@ -32,9 +32,9 @@
             <mat-icon>exit_to_app</mat-icon>
             Logout
           </button>
-          <button mat-button color="primary" dense>
+          <!-- <button mat-button color="primary" dense>
             View profile
-          </button>
+          </button> -->
         </div>
       </mat-menu>
     </div>
@@ -102,22 +102,61 @@
 
       <div class="container">
         <div style="margin-top:10px;">
-          <mat-form-field appearance="standard">
+          <!-- <mat-form-field appearance="standard">
             <mat-label>Filter</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-          </mat-form-field>
+          </mat-form-field> -->
+
+          <!-- <div class="container">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>course_Id</th>
+                  <th>coursecategory</th>
+                  <th>coursestartdate</th>
+                  <th>description</th>
+                  <th>format</th>
+                  <th>level</th>
+                  <th>price</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of data">
+                  <td><span>{{row.course_Id}}</span></td>
+                  <td><span>{{row.coursecategory}}</span></td>
+                  <td><span>{{row.coursestartdate}}</span></td>
+                  <td><span>{{row.description}}</span></td>
+                  <td><span>{{row.format}}</span></td>
+                  <td><span>{{row.level}}</span></td>
+                  <td><span>{{row.price}}</span></td>
+                 
+                  <td>
+                    <button mat-raised-button color="warning" >Edit</button>
+                    <button class="btn btn-sm btn-danger">
+                      <i class="fa fa-remove"></i>Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div> -->
 
 
-          <table>
-            <tr>
-              <td>course_Id</td>
-              <td>coursecategory</td>
-              <td>coursestartdate</td>
-              <td>description</td>
-              <td>format</td>
-              <td>level</td>
-              <td>price</td>
-            </tr>
+
+
+          <table style="margin-top:30px ;">
+            <thead>
+              <tr class="font">
+                <td>course_Id</td>
+                <td>coursecategory</td>
+                <td>coursestartdate</td>
+                <td>description</td>
+                <td>format</td>
+                <td>level</td>
+                <td>price</td>
+                <td>Action</td>
+              </tr>
+            </thead>
             <tr *ngFor="let row of data">
               <td>{{row.course_Id}}</td>
               <td>{{row.coursecategory}}</td>
@@ -126,6 +165,18 @@
               <td>{{row.format}}</td>
               <td>{{row.level}}</td>
               <td>{{row.price}}</td>
+              <!-- <td>
+                <button mat-raised-button color="warning" >Edit</button>
+                <button class="btn btn-sm btn-danger">
+                  <i class="fa fa-remove"></i>Delete</button>
+              </td> -->
+              <td>
+                <div class="example-button-row">
+                  <button routerLink="/update/{{row.course_Id}}" style="margin-right: 2px;" mat-flat-button
+                    color="accent">Edit</button>
+                  <button mat-flat-button color="warn" (click)="deletecourse(row.course_Id)">Delete</button>
+                </div>
+              </td>
             </tr>
           </table>
 

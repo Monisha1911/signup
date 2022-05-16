@@ -12,6 +12,8 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class DashboardComponent {
   fab : Register;
+  user : Register;
+  
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   userDisplayName = '';
@@ -24,6 +26,7 @@ export class DashboardComponent {
 
   ngOnInit() {
     this.userDisplayName = localStorage.getItem('loggedUser');
+
  }
 
   ngAfterViewInit() {

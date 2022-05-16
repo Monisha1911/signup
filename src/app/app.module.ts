@@ -32,10 +32,12 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-import { ProfileComponent } from './profile/profile.component';
+// import { ProfileComponent } from './profile/profile.component';
 import {RouterModule} from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { UpdateComponent } from './update/update.component';
+import { AdminComponent } from './admin/admin.component';
 // import { DemoMaterialModule } from "@angular/material-module"
 // import { profile } from 'console';
 // import { ProfileComponent } from './components/profile/profile.component';
@@ -49,7 +51,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     CoursesComponent,
     MaterialComponent,
     DialogComponent,
-    ProfileComponent,
+    // ProfileComponent,
+    UpdateComponent,
+    AdminComponent,
     
     // ProfileComponent
   ],
@@ -87,13 +91,13 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     
 
   ],
-  entryComponents: [ProfileComponent],
+  // entryComponents: [ProfileComponent],
   providers: [AuthService,{
     provide: HTTP_INTERCEPTORS,
     useClass:TokenInterceptorService,
     multi: true
   }],
-  bootstrap: [AppComponent,ProfileComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
 

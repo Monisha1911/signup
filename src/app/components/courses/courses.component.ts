@@ -19,7 +19,7 @@ import { Register } from 'src/app/Model/register';
 })
 export class CoursesComponent implements OnInit {
   fab : Register;
-  data=[]
+  data:any=[];
 
   displayedColumns: string[] = ['Coursecategory', 'Coursestartdate', 'Description', 'Format', 'Level','Price', 'action'];
   dataSource!: MatTableDataSource<any>;
@@ -78,32 +78,12 @@ export class CoursesComponent implements OnInit {
     })
   }
 
-  editcourse(row : any){
-    this.dialog.open(DialogComponent,{
-      width:'30%',
-      data:row
-    }).afterClosed().subscribe(val=>{
-      if(val==='update'){
-        this.getAllProducts();
-      }
+  deletecourse(j){
+   
+    this.authservice.deleteData(j).subscribe(data=>{
+      this.getAllProducts();
     })
-  }
 
-  deletecourse(id:number){
-    this.authservice.deletecourse(id)
-    .subscribe({
-      next:(res)=>{
-        // alert("product deleted successfully");
-        this.toast.success({ detail: "Success Message", summary: "product deleted successfully", duration: 2000 })
-
-        this.getAllProducts();
-      },
-      error:()=>{
-        // alert("Error while deleting the course!!");
-      this.toast.error({ detail: "Error Message", summary: "Error while deleting the Records!!", duration: 3000 })
-
-      }
-    })
   }
 
   applyFilter(event: Event) {
@@ -134,3 +114,30 @@ window.onclick = function (event) {
     }
   }
 }
+
+
+// deletecourse(id:number){
+  //   this.authservice.deletecourse(id)
+  //   .subscribe({
+  //     next:(res)=>{
+  //       this.toast.success({ detail: "Success Message", summary: "product deleted successfully", duration: 2000 })
+
+  //       this.getAllProducts();
+  //     },
+  //     error:()=>{
+  //     this.toast.error({ detail: "Error Message", summary: "Error while deleting the Records!!", duration: 3000 })
+
+  //     }
+  //   })
+  // }
+
+  // editcourse(row : any){
+  //   this.dialog.open(DialogComponent,{
+  //     width:'30%',
+  //     data:row
+  //   }).afterClosed().subscribe(val=>{
+  //     if(val==='update'){
+  //       this.getAllProducts();
+  //     }
+  //   })
+  // }

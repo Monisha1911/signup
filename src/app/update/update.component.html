@@ -1,0 +1,67 @@
+<h1 mat-dialog-title>Edit Courses Form</h1>
+<div mat-dialog-content>
+    <form [formGroup]="editForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Coursecategory</mat-label>
+            <!-- <input matInput placeholder="Category"> -->
+            <mat-select formControlName="Coursecategory" placeholder="Category">
+                <mat-option value="C">C </mat-option>
+                <mat-option value="C++">C++ </mat-option>
+                <mat-option value="Angular">Angular </mat-option>
+                <mat-option value="Python">Python</mat-option>
+                <mat-option value="react">react</mat-option>
+                <mat-option value=".Net">.Net</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Coursestartdate</mat-label>
+            <input formControlName="Coursestartdate" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Format</mat-label>
+            <mat-select formControlName="Format" placeholder="Format">
+                <mat-option value="Daily Format">Daily Format</mat-option>
+                <mat-option value="Weekly Format">Weekly Format</mat-option>
+                <mat-option value="Monthly Format">Monthly Format</mat-option>
+
+            </mat-select>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input formControlName="Price" matInput type="number" placeholder="amount" />
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input formControlName="Description" matInput type="text" placeholder="" />
+
+        </mat-form-field>
+        <br>
+
+        <label for="">
+            <h2>Level</h2>
+        </label>
+        <mat-radio-group formControlName="Level" class="example-radio-group">
+            <mat-radio-button class="example-radio-button" *ngFor="let level of levelList" [value]="level">
+                {{level}}
+            </mat-radio-button>
+        </mat-radio-group>
+    </form>
+</div>
+
+<div mat-dialog-action [align]="'first'">
+    <!-- <button mat-raised-button color="warn" mat-dialog-close>Close</button> -->
+    <!-- <button type="update" class="btn btn-primary">Update</button> -->
+    <button mat-raised-button color="primary" mat-dialog-close>Update</button>
+
+
+</div>
