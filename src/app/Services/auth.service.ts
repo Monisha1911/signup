@@ -21,14 +21,14 @@ export class AuthService {
   }
 
   postData(data: any) :Observable<any>{
-    let url = "http://localhost:5000/api/Authentication/Register";
+    let url = "https://localhost:5001/api/Authenticate/register";
     console.log(data)
     return this.http.post(url, data);
   }
 
   
   loginData(data: any) : Observable<any>{
-    let url1 = "http://localhost:5000/api/Authentication/Login";
+    let url1 = "https://localhost:5001/api/Authenticate/login";
     console.log(data)
     return this.http.post(url1, data);
   }
@@ -50,11 +50,11 @@ export class AuthService {
   }
 
   postCourse(data:any){
-    return this.http.post<any>("http://localhost:3000/courseList/",data);
+    return this.http.post<any>("https://localhost:5001/api/Authenticate/Add Courses/",data);
   }
 
   getcourse(){
-    return this.http.get<any>("http://localhost:3000/courseList/");
+    return this.http.get<any>("https://localhost:5001/api/Authenticate/get courses/");
   }
 
   putcourse(data:any,id : number){
@@ -62,7 +62,7 @@ export class AuthService {
   }
 
   deletecourse(id:number){
-    return this.http.delete<any>("http://localhost:3000/courseList/" + id);
+    return this.http.delete<any>("https://localhost:5001/api/Authenticate/delete Courses?Id=" + id);
   }
 
 
