@@ -8,6 +8,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { AuthService } from 'src/app/Services/auth.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Register } from 'src/app/Model/register';
 
 
 
@@ -17,6 +18,8 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
+  fab : Register;
+
   displayedColumns: string[] = ['Coursecategory', 'Coursestartdate', 'Description', 'Format', 'Level','Price', 'action'];
   dataSource!: MatTableDataSource<any>;
 
@@ -25,10 +28,14 @@ export class CoursesComponent implements OnInit {
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-
-  constructor(private observer: BreakpointObserver, private dialog : MatDialog, private authservice : AuthService,private toast: NgToastService) { }
+  userDisplayName = '';
+  constructor(private observer: BreakpointObserver, private dialog : MatDialog, private authservice : AuthService,private toast: NgToastService) { 
+    this.fab = this.authservice.userValue;
+  }
 
   ngOnInit(): void {
+    this.userDisplayName = localStorage.getItem('loggedUser');
+
     this.getAllProducts();
   }
 

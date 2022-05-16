@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { Register } from 'src/app/Model/register';
+import { AuthService } from 'src/app/Services/auth.service';
 // import { LoginComponent } from '../login/login.component';
 
 @Component({
@@ -9,15 +11,19 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  fab : Register;
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   userDisplayName = '';
 
 
-  constructor(private observer: BreakpointObserver) { }
+  constructor(private observer: BreakpointObserver, private authservice:AuthService) { 
+
+    this.fab = this.authservice.userValue;
+  }
 
   ngOnInit() {
-    this.userDisplayName = sessionStorage.getItem('loggedUser');
+    this.userDisplayName = localStorage.getItem('loggedUser');
  }
 
   ngAfterViewInit() {

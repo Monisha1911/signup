@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Register } from '../Model/register';
+import { AuthService } from '../Services/auth.service';
 
 
 @Component({
@@ -10,10 +12,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   
 })
 export class ProfileComponent implements OnInit {
+  user: Register;
   Form : FormGroup;
   editMode:boolean = true;
 
-  constructor(private fb: FormBuilder, private router:Router , private activatedRoute:ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private router:Router , private activatedRoute:ActivatedRoute, private authservice:AuthService) {
+    this.user = this.authservice.userValue;
+   }
 
   ngOnInit(): void {
     this.Form = this.fb.group({

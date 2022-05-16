@@ -1,15 +1,6 @@
 {
   "courseList": [
     {
-      "Coursecategory": "Angular",
-      "Coursestartdate": "2022-05-11T18:30:00.000Z",
-      "Format": "Weekly Format",
-      "Price": 2500,
-      "Description": "course is easy",
-      "Level": "Intermediate",
-      "id": 2
-    },
-    {
       "Coursecategory": "C++",
       "Coursestartdate": "2022-05-10T18:30:00.000Z",
       "Format": "Monthly Format",

@@ -1,14 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Register } from '../Model/register';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private userSubject:BehaviorSubject<Register>;
+  public user: Observable<Register>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+     this.userSubject = new BehaviorSubject<Register>(JSON.parse(localStorage.getItem('user')));
+    this.user = this.userSubject.asObservable();
+
+   }
+
+   public get userValue(): Register {
+    return this.userSubject.value;
+  }
 
   postData(data: any) :Observable<any>{
     let url = "http://localhost:5000/api/Authentication/Register";

@@ -7,9 +7,11 @@
             close
         </mat-icon>
     </button>
-    Welcome
+    <!-- Welcome -->
+  <div class="username">Welcome: {{fab.user}}</div>
 
-    <div class="example-menu-row" style="margin-left:1250px;">
+
+    <div class="example-menu-row" style="margin-left:1140px;">
         <div style="margin-top: 35px;">
           <button mat-stroked-button [matMenuTriggerFor]="menuHero" color="primary" ng-init>
             <mat-icon>person</mat-icon>Profile
@@ -18,13 +20,13 @@
             <div class="uxg-menu-header">
               <div class="uxg-avatar-hero-block">
                 <!-- <div class="uxg-avatar" >SM</div> -->
-                <h2 class="uxg-h6">Monisha</h2>
+                <h2 class="uxg-h6">{{fab.user}}</h2>
                 <span class="uxg-caption">monishasingamala@gmail.com</span>
               </div>
             </div>
             <mat-divider></mat-divider>
             <div class="uxg-menu-footer">
-              <button mat-flat-button color="primary" dense>
+              <button mat-flat-button color="primary" dense routerLink="/login">
                 <mat-icon>exit_to_app</mat-icon>
                 Logout
               </button>
@@ -109,7 +111,6 @@
                 </div>
             </li>
         </ul>
-
         </button> -->
 
 
