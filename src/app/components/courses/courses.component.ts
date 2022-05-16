@@ -19,6 +19,7 @@ import { Register } from 'src/app/Model/register';
 })
 export class CoursesComponent implements OnInit {
   fab : Register;
+  data=[]
 
   displayedColumns: string[] = ['Coursecategory', 'Coursestartdate', 'Description', 'Format', 'Level','Price', 'action'];
   dataSource!: MatTableDataSource<any>;
@@ -64,11 +65,12 @@ export class CoursesComponent implements OnInit {
   getAllProducts(){
     this.authservice.getcourse()
     .subscribe({
-      next:(res)=>{
-        console.log(res);
-        this.dataSource = new MatTableDataSource(res);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort
+      next:(data)=>{ 
+        console.log(data);
+        this.data=data
+        // this.dataSource = new MatTableDataSource(res);
+        // this.dataSource.paginator = this.paginator;
+        // this.dataSource.sort = this.sort
       },error:(err)=>{
       this.toast.error({ detail: "Error Message", summary: "Error while fetching the Records!!", duration: 3000 })
 

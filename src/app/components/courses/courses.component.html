@@ -23,7 +23,7 @@
             <!-- <div class="uxg-avatar" >SM</div> -->
             <h2 class="uxg-h6">{{fab.user}}</h2>
             <span class="uxg-caption">{{fab.email}}</span>
-            
+
           </div>
         </div>
         <mat-divider></mat-divider>
@@ -104,69 +104,34 @@
         <div style="margin-top:10px;">
           <mat-form-field appearance="standard">
             <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Angular" #input>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
           </mat-form-field>
 
-          <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort>
 
-              <!-- ID Column -->
-              <ng-container matColumnDef="Coursecategory">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Coursecategory </th>
-                <td mat-cell *matCellDef="let row"> {{row.Coursecategory}} </td>
-              </ng-container>
+          <table>
+            <tr>
+              <td>course_Id</td>
+              <td>coursecategory</td>
+              <td>coursestartdate</td>
+              <td>description</td>
+              <td>format</td>
+              <td>level</td>
+              <td>price</td>
+            </tr>
+            <tr *ngFor="let row of data">
+              <td>{{row.course_Id}}</td>
+              <td>{{row.coursecategory}}</td>
+              <td>{{row.coursestartdate}}</td>
+              <td>{{row.description}}</td>
+              <td>{{row.format}}</td>
+              <td>{{row.level}}</td>
+              <td>{{row.price}}</td>
+            </tr>
+          </table>
 
-              <!-- Progress Column -->
-              <ng-container matColumnDef="Coursestartdate">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Coursestartdate </th>
-                <td mat-cell *matCellDef="let row"> {{row.Coursestartdate | date}} </td>
-              </ng-container>
-
-              <!-- Name Column -->
-              <ng-container matColumnDef="Format">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Format </th>
-                <td mat-cell *matCellDef="let row"> {{row.Format}} </td>
-              </ng-container>
-
-              <!-- Fruit Column -->
-              <ng-container matColumnDef="Price">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
-                <td mat-cell *matCellDef="let row"> {{row.Price | currency}} </td>
-              </ng-container>
-
-              <ng-container matColumnDef="Description">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
-                <td mat-cell *matCellDef="let row"> {{row.Description}} </td>
-              </ng-container>
-
-              <ng-container matColumnDef="Level">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Level </th>
-                <td mat-cell *matCellDef="let row"> {{row.Level}} </td>
-              </ng-container>
-
-              <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> action </th>
-                <td mat-cell *matCellDef="let row">
-                  <button mat-icon-button (click)="editcourse(row)" color="primary">
-                    <mat-icon>edit</mat-icon>
-                  </button>
-                  <button (click)="deletecourse(row.id)" mat-icon-button color="warn">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-                </td>
-              </ng-container>
-
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-              <!-- Row shown when there is no matching data. -->
-              <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-              </tr>
-            </table>
-
+          <!-- <div class="mat-elevation-z8">
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-          </div>
+          </div> -->
         </div>
       </div>
 
