@@ -3,6 +3,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Register } from 'src/app/Model/register';
 import { AuthService } from 'src/app/Services/auth.service';
+import { FlexAlignStyleBuilder } from '@angular/flex-layout';
 // import { LoginComponent } from '../login/login.component';
 
 @Component({
@@ -13,23 +14,22 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class DashboardComponent {
   fab : Register;
   user : Register;
-  
-  @ViewChild(MatSidenav)
+
+  @ViewChild('sidenav', { static: true })
   sidenav!: MatSidenav;
   userDisplayName = '';
-
-
+  rolename: string;
+ 
   constructor(private observer: BreakpointObserver, private authservice:AuthService) { 
 
     this.fab = this.authservice.userValue;
+    
   }
 
   ngOnInit() {
     this.userDisplayName = localStorage.getItem('loggedUser');
 
- }
-
-  ngAfterViewInit() {
+    this.rolename = localStorage.getItem('user.rolename');
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {
         this.sidenav.mode = 'over';
@@ -39,11 +39,30 @@ export class DashboardComponent {
         this.sidenav.open();
       }
     });
+   
+    
+
+ }
+
+
+
+  ngAfterViewInit() {
+    // this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+    //   if (res.matches) {
+    //     this.sidenav.mode = 'over';
+    //     this.sidenav.close();
+    //   } else {
+    //     this.sidenav.mode = 'side';
+    //     this.sidenav.open();
+    //   }
+    // });
   }
 
   // profiletag()
   // {
-  //   this.showMe = !this.showMe
+  //   if(this.fab.rolename == "Admin"){
+  //     this.isVisible = true;
+  //   }
   // }
   myFunction(){
   document.getElementById("myDropdown").classList.toggle("show");

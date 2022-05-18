@@ -7,7 +7,9 @@ export class Register {
   password: string;
   token: string;
   user: Register;
-  // RoleType: string;
+  rolename: string;
+
+  
   role:RoleType;
 }
 

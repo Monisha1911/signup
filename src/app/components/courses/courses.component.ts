@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'src/app/Services/auth.service';
 import { NgToastService } from 'ng-angular-popup';
 import { Register } from 'src/app/Model/register';
@@ -18,29 +18,29 @@ import { Register } from 'src/app/Model/register';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  fab : Register;
-  data:any=[];
+  fab: Register;
+  data: any = [];
+  rolename: string;
 
-  displayedColumns: string[] = ['Coursecategory', 'Coursestartdate', 'Description', 'Format', 'Level','Price', 'action'];
+  displayedColumns: string[] = ['Coursecategory', 'Coursestartdate', 'Description', 'Format', 'Level', 'Price', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  @ViewChild(MatSidenav)
+  @ViewChild('sidenav', { static: true })
   sidenav!: MatSidenav;
+
   userDisplayName = '';
-  constructor(private observer: BreakpointObserver, private dialog : MatDialog, private authservice : AuthService,private toast: NgToastService) { 
+  constructor(private observer: BreakpointObserver, private dialog: MatDialog, private authservice: AuthService, private toast: NgToastService) {
     this.fab = this.authservice.userValue;
   }
 
   ngOnInit(): void {
     this.userDisplayName = localStorage.getItem('loggedUser');
+    this.rolename = localStorage.getItem('user.rolename');
 
     this.getAllProducts();
-  }
-
-  ngAfterViewInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {
         this.sidenav.mode = 'over';
@@ -52,39 +52,71 @@ export class CoursesComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    // this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+    //   if (res.matches) {
+    //     this.sidenav.mode = 'over';
+    //     this.sidenav.close();
+    //   } else {
+    //     this.sidenav.mode = 'side';
+    //     this.sidenav.open();
+    //   }
+    // });
+  }
+
   openDialog() {
     this.dialog.open(DialogComponent, {
-      width: '30%'    
-    }).afterClosed().subscribe(val=>{
-      if(val==='save'){
+      width: '30%'
+    }).afterClosed().subscribe(val => {
+      if (val === 'save') {
         this.getAllProducts();
       }
     })
   }
 
-  getAllProducts(){
+  getAllProducts() {
     this.authservice.getcourse()
-    .subscribe({
-      next:(data)=>{ 
-        console.log(data);
-        this.data=data
-        // this.dataSource = new MatTableDataSource(res);
-        // this.dataSource.paginator = this.paginator;
-        // this.dataSource.sort = this.sort
-      },error:(err)=>{
-      this.toast.error({ detail: "Error Message", summary: "Error while fetching the Records!!", duration: 3000 })
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.data = data
+          // this.dataSource = new MatTableDataSource(res);
+          // this.dataSource.paginator = this.paginator;
+          // this.dataSource.sort = this.sort
+        }, error: (err) => {
+          this.toast.error({ detail: "Error Message", summary: "Error while fetching the Records!!", duration: 3000 })
 
-      }
-    })
+        }
+      })
   }
 
-  deletecourse(j){
-   
-    this.authservice.deleteData(j).subscribe(data=>{
+  deletecourse(j) {
+
+    this.authservice.deleteData(j).subscribe(data => {
       this.getAllProducts();
     })
 
   }
+  edit(row, index) {
+
+
+  }
+
+  // editcourse(row : any){
+  //   this.dialog.open(DialogComponent,{
+  //     width:'30%',
+  //     data:row
+  //   }).afterClosed().subscribe(val=>{
+  //     if(val==='update'){
+  //       this.getAllProducts();
+  //     }
+  //   })
+  // }
+
+  // edit(row, index){
+
+
+  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -95,10 +127,10 @@ export class CoursesComponent implements OnInit {
     }
   }
 
-  myFunction(){
+  myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
-  
-    }
+
+  }
 
 
 }
@@ -131,13 +163,3 @@ window.onclick = function (event) {
   //   })
   // }
 
-  // editcourse(row : any){
-  //   this.dialog.open(DialogComponent,{
-  //     width:'30%',
-  //     data:row
-  //   }).afterClosed().subscribe(val=>{
-  //     if(val==='update'){
-  //       this.getAllProducts();
-  //     }
-  //   })
-  // }

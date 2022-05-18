@@ -38,6 +38,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { UpdateComponent } from './update/update.component';
 import { AdminComponent } from './admin/admin.component';
+import { AboutComponent } from './about/about.component';
 // import { DemoMaterialModule } from "@angular/material-module"
 // import { profile } from 'console';
 // import { ProfileComponent } from './components/profile/profile.component';
@@ -54,6 +55,7 @@ import { AdminComponent } from './admin/admin.component';
     // ProfileComponent,
     UpdateComponent,
     AdminComponent,
+    AboutComponent,
     
     // ProfileComponent
   ],

@@ -11,7 +11,9 @@ mat-card{
   background-color:rgb(31, 7, 153);
   color:white;
   padding:10px;
-  margin:0px
+  margin-left:-15px;
+  margin-right:-15px;
+  margin-top:-13px;
   /* height:40px; */
   /* width:597px; */
   /* margin-left: 0px;

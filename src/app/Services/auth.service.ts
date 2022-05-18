@@ -10,6 +10,7 @@ import { map } from "rxjs/operators";
 export class AuthService {
   private userSubject:BehaviorSubject<Register>;
   public user: Observable<Register>;
+  tokenres: any;
 
   constructor(private http: HttpClient) {
      this.userSubject = new BehaviorSubject<Register>(JSON.parse(localStorage.getItem('user')));
@@ -58,9 +59,9 @@ export class AuthService {
     return this.http.get<any>("https://localhost:5001/api/Authenticate/get courses/");
   }
 
-  putcourse(data:any,id : number){
-    return this.http.put<any>("https://localhost:5001/api/Authenticate/edit" + id,data)
-  }
+  // putcourse(data:any,id : number){
+  //   return this.http.put<any>("https://localhost:5001/api/Authenticate/edit" + id,data)
+  // }
 
   // url5="https://localhost:5001/api/Authenticate/delete"
 
@@ -68,15 +69,29 @@ export class AuthService {
   //   return this.http.delete<any>(`${this.url5}/${course_Id}`);
   // }
 
-  url6="https://localhost:5001/api/Authenticate/getcourses"
+  // url6="https://localhost:5001/api/Authenticate/GetByID?Course_ID="
   getCurrentCourse(course_Id){
-    return this.http.get(`${this.url6}/${course_Id}`)
+    return this.http.get('https://localhost:5001/api/Authenticate/GetByID?Course_ID='+course_Id)
   }
 
   deleteData(course_Id){
     return this.http.delete('https://localhost:5001/api/Authenticate/delete Courses?Id='+course_Id)
-    
-    
+       
+  }
+
+// url7="https://localhost:5001/api/Authenticate/update Course"
+
+  editData(data,course_Id){
+    // return this.http.put(`${this.url7}/${course_Id}`,data)
+    return this.http.put<any>("https://localhost:5001/api/Authenticate/update Course" + course_Id,data)       
+  }
+
+ 
+
+  GetRolebyToken(token:any){
+    let _token= null;
+    this.tokenres=JSON.parse(atob(_token))
+    return this.tokenres.rolename;
   }
 
 

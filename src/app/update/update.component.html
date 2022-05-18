@@ -1,6 +1,11 @@
-<h1 mat-dialog-title>Edit Courses Form</h1>
-<div mat-dialog-content>
-    <form [formGroup]="editForm">
+<h1 >Edit Courses Form</h1>
+<div>
+    <form [formGroup]="editForm" >
+        <mat-form-field appearance="outline">
+            <mat-label>course_Id</mat-label>
+            <input formControlName="course_Id" matInput type="number" placeholder="ID" />
+        </mat-form-field>
+        <br>
         <mat-form-field appearance="outline">
             <mat-label>Coursecategory</mat-label>
             <!-- <input matInput placeholder="Category"> -->
@@ -58,10 +63,16 @@
     </form>
 </div>
 
-<div mat-dialog-action [align]="'first'">
-    <!-- <button mat-raised-button color="warn" mat-dialog-close>Close</button> -->
-    <!-- <button type="update" class="btn btn-primary">Update</button> -->
-    <button mat-raised-button color="primary" mat-dialog-close>Update</button>
+<div mat-dialog-action [align]="'middle'">
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="editCourse()">Update</button>
 
 
 </div>
+
+<!-- <div  >
+    <button mat-raised-button color="primary">Update</button>
+    <button type="update" class="btn btn-primary">Update</button>
+    <button type="submit" class="b2">update</button>
+
+
+</div> -->

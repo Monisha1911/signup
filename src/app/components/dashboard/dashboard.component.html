@@ -8,10 +8,10 @@
         </mat-icon>
     </button>
     <!-- Welcome -->
-  <div class="username">Welcome: {{fab.user}}</div>
+  <div class="username">Welcome  {{fab.user}},</div>
 
 
-    <div class="example-menu-row" style="margin-left:1140px;">
+    <div class="header" >
         <div style="margin-top: 35px;">
           <button mat-stroked-button [matMenuTriggerFor]="menuHero" color="primary" ng-init>
             <mat-icon>person</mat-icon>Profile
@@ -20,8 +20,10 @@
             <div class="uxg-menu-header">
               <div class="uxg-avatar-hero-block">
                 <!-- <div class="uxg-avatar" >SM</div> -->
-                <h2 class="uxg-h6">{{fab.user}}</h2>
-                <span class="uxg-caption">{{fab.email}}</span>
+                <h1 style="text-align:center ;">{{fab.user}}</h1>
+                <span style="text-align:center ;">{{fab.email}}</span>
+                <div style="text-align:center ;">Role:{{fab.rolename}}</div>
+
               </div>
             </div>
             <mat-divider></mat-divider>
@@ -30,8 +32,11 @@
                 <mat-icon>exit_to_app</mat-icon>
                 Logout
               </button>
-              <!-- <button mat-button color="primary" dense>
-                View profile
+              <button *ngIf="fab.rolename==='Admin'" mat-button color="primary" dense routerLink="/admin" >
+                ViewUsers
+              </button>
+              <!-- <button *ngIf="isUser" mat-button color="primary" dense routerLink="/admin" >
+                ViewUsers
               </button> -->
             </div>
           </mat-menu>
@@ -41,23 +46,7 @@
     <!-- <div class="userName">{{userDisplayName}}</div> -->
 
 
-    <!-- <button mat-button class="profile-button">
-        <mat-icon>person</mat-icon>
-        <span>Profile</span>
-    </button> -->
-    <!-- <button (click)=" profiletag()">Profile </button>
-    
-    <div>
-        <h2 *ngIf="showMe"> Monisha</h2>
-    </div>
-    <br>
-    <div>
-        <h2 *ngIf="showMe"> monishasingamala@gmail.com</h2>
-    </div> -->
-
-
-
-    <button routerLink="/login" style="margin-left:auto;">Logout </button>
+    <!-- <button routerLink="/login" style="margin-left:auto;">Logout </button> -->
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -71,14 +60,14 @@
             <span>Materials</span>
         </button>
 
-        <div class="dropdown" style="margin-top:10px;">
+        <div class="dropdown" style="margin-top:10px;" *ngIf="fab.rolename==='Admin'">
             <button (click)="myFunction()" class="dropbtn" style="margin-right:40px;">
                 <mat-icon>person</mat-icon>
                 <span>Profile</span>
             </button>
             <div id="myDropdown" class="dropdown-content">
-                <a routerLink="/profile"><i class="fa fa-eye"></i>View Profile</a>
-                <a routerLink="/profile" ><i class="fa fa-pencil"></i>Edit Profile</a>
+                <a routerLink="/admin"><i class="fa fa-eye"></i>View Users</a>
+                <!-- <a routerLink="/profile" ><i class="fa fa-pencil"></i>Edit Profile</a> -->
                 <a routerLink="/login"><i class="fa fa-power-off"></i>Logout</a>
             </div>
         </div>
@@ -159,19 +148,15 @@
 
 
 <mat-toolbar class="footer">
-    <!-- <mat-icon style="margin-top:100px;margin-bottom:300px;margin-left:500px;margin-right:0px;">facebook</mat-icon><br><br><br>
-    <mat-icon style="margin-top:100px;margin-bottom:300px;margin-left:0px;margin-right:500px;padding-left:10px;">whatsapp</mat-icon><br> -->
-    <p style="margin-top:50px;margin-bottom:100px;margin-left:auto;margin-right:auto;font-size:15px">
+   
+    <!-- <p style="margin-top:50px;margin-bottom:100px;margin-left:auto;margin-right:auto;font-size:15px">
         <mat-icon><a href="https://www.javatpoint.com/"><i class="fa fa-twitter"></i></a></mat-icon>
 
         <mat-icon><a href="https://www.javatpoint.com/">facebook</a></mat-icon>
         <mat-icon><a href="https://web.whatsapp.com/">whatsapp</a></mat-icon><br><i>@Copyright 2022<br>Learning
             Portal:Content and Certificate Management<br>All rights reserved.</i>
-    </p>
-    <!-- <div class="footers">  
-  <p style="text-align:center"> @Copyright  JavaTpoint 2020- All Right Reserved.</p> 
-</div> -->
+    </p> -->
+    <p style="margin-top:50px;margin-bottom:100px;margin-left:auto;margin-right:auto;font-size:15px"><mat-icon>facebook</mat-icon><mat-icon>whatsapp</mat-icon><br><i>@Copyright 2022,Learning Portal:Content and Certificate Management,All rights reserved.</i></p>
+
+  
 </mat-toolbar>
-<!-- <div class="footer">  
-    @Copyright  JavaTpoint 2020- All Right Reserved.   
-</div> -->

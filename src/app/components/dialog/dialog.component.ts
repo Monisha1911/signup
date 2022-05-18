@@ -13,13 +13,13 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class DialogComponent implements OnInit {
 
-  levelList = ["Beginner", "Intermediate", "Export"];
+  levelList = ["Beginner", "Intermediate", "Expert"];
   courseForm !: FormGroup;
   actionBtn: string = "Save"
 
   constructor(private formBuilder: FormBuilder,private toast: NgToastService,
     private authservice: AuthService,
-    @Inject(MAT_DIALOG_DATA) public editData: any,
+    // @Inject(MAT_DIALOG_DATA) public editData: any,
     private dialogRef: MatDialogRef<DialogComponent>,
 
   ) { }
@@ -35,24 +35,20 @@ export class DialogComponent implements OnInit {
 
     });
 
-    if (this.editData) {
-      this.actionBtn = "Update";
-      this.courseForm.controls['Coursecategory'].setValue(this.editData.Coursecategory);
-      this.courseForm.controls['Coursestartdate'].setValue(this.editData.Coursestartdate);
-      this.courseForm.controls['Format'].setValue(this.editData.Format);
-      this.courseForm.controls['Price'].setValue(this.editData.Price);
-      this.courseForm.controls['Description'].setValue(this.editData.Description);
-      this.courseForm.controls['Level'].setValue(this.editData.Level);
+    // if (this.editData) {
+    //   this.actionBtn = "Update";
+    //   this.courseForm.controls['Coursecategory'].setValue(this.editData.Coursecategory);
+    //   this.courseForm.controls['Coursestartdate'].setValue(this.editData.Coursestartdate);
+    //   this.courseForm.controls['Format'].setValue(this.editData.Format);
+    //   this.courseForm.controls['Price'].setValue(this.editData.Price);
+    //   this.courseForm.controls['Description'].setValue(this.editData.Description);
+    //   this.courseForm.controls['Level'].setValue(this.editData.Level);
 
-    }
+    // }
 
   }
   addCourse() {
-    // if (this.editData) {
-     
-    // } else {
-    //   this.updatecourse()
-    // }
+    
     if (this.courseForm.valid) {
       this.authservice.postCourse(this.courseForm.value)
         .subscribe({
@@ -71,22 +67,22 @@ export class DialogComponent implements OnInit {
     }
   }
 
-  updatecourse() {
-    this.authservice.putcourse(this.courseForm.value, this.editData.id)
-      .subscribe({
-        next: (res) => {
-          // alert("course updated successfully");
-          this.toast.success({ detail: "Success Message", summary: "course updated successfully", duration: 2000 });
+  // updatecourse() {
+  //   this.authservice.putcourse(this.courseForm.value, this.editData.id)
+  //     .subscribe({
+  //       next: (res) => {
+  //         // alert("course updated successfully");
+  //         this.toast.success({ detail: "Success Message", summary: "course updated successfully", duration: 2000 });
 
-          this.courseForm.reset();
-          this.dialogRef.close('update');
-        },
-        error: () => {
-          // alert("Error while updating the record  !!");
-          this.toast.error({ detail: "Error Message", summary: "Error while updating the course", duration: 3000 });
+  //         this.courseForm.reset();
+  //         this.dialogRef.close('update');
+  //       },
+  //       error: () => {
+  //         // alert("Error while updating the record  !!");
+  //         this.toast.error({ detail: "Error Message", summary: "Error while updating the course", duration: 3000 });
 
-        }
-      })
-  }
+  //       }
+  //     })
+  // }
 
 }
