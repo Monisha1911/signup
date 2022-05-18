@@ -8,40 +8,40 @@
         </mat-icon>
     </button>
     <!-- Welcome -->
-  <div class="username">Welcome  {{fab.user}},</div>
+    <div class="username">Welcome  {{fab.user}}</div>
 
 
-    <div class="header" >
+    <div class="header">
         <div style="margin-top: 35px;">
-          <button mat-stroked-button [matMenuTriggerFor]="menuHero" color="primary" ng-init>
-            <mat-icon>person</mat-icon>Profile
-          </button>
-          <mat-menu #menuHero="matMenu" class="uxg-user-profile">
-            <div class="uxg-menu-header">
-              <div class="uxg-avatar-hero-block">
-                <!-- <div class="uxg-avatar" >SM</div> -->
-                <h1 style="text-align:center ;">{{fab.user}}</h1>
-                <span style="text-align:center ;">{{fab.email}}</span>
-                <div style="text-align:center ;">Role:{{fab.rolename}}</div>
+            <button mat-stroked-button [matMenuTriggerFor]="menuHero" color="primary" ng-init>
+                <mat-icon>person</mat-icon>Profile
+            </button>
+            <mat-menu #menuHero="matMenu" class="uxg-user-profile">
+                <div class="uxg-menu-header">
+                    <div class="uxg-avatar-hero-block">
+                        <!-- <div class="uxg-avatar" >SM</div> -->
+                        <h1 style="text-align:center ;">{{fab.user}}</h1>
+                        <span style="text-align:center ;">{{fab.email}}</span>
+                        <!-- <div style="text-align:center ;">Role:{{fab.rolename}}</div> -->
 
-              </div>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="uxg-menu-footer">
-              <button mat-flat-button color="primary" dense routerLink="/login">
-                <mat-icon>exit_to_app</mat-icon>
-                Logout
-              </button>
-              <button *ngIf="fab.rolename==='Admin'" mat-button color="primary" dense routerLink="/admin" >
-                ViewUsers
-              </button>
-              <!-- <button *ngIf="isUser" mat-button color="primary" dense routerLink="/admin" >
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="uxg-menu-footer">
+                    <button mat-flat-button color="primary" dense routerLink="/login">
+                        <mat-icon>exit_to_app</mat-icon>
+                        Logout
+                    </button>
+                    <button *ngIf="fab.rolename==='Admin'" mat-button color="primary" dense routerLink="/admin">
+                        ViewUsers
+                    </button>
+                    <!-- <button *ngIf="isUser" mat-button color="primary" dense routerLink="/admin" >
                 ViewUsers
               </button> -->
-            </div>
-          </mat-menu>
+                </div>
+            </mat-menu>
         </div>
-      </div>
+    </div>
 
     <!-- <div class="userName">{{userDisplayName}}</div> -->
 
@@ -148,7 +148,7 @@
 
 
 <mat-toolbar class="footer">
-   
+
     <!-- <p style="margin-top:50px;margin-bottom:100px;margin-left:auto;margin-right:auto;font-size:15px">
         <mat-icon><a href="https://www.javatpoint.com/"><i class="fa fa-twitter"></i></a></mat-icon>
 
@@ -156,7 +156,11 @@
         <mat-icon><a href="https://web.whatsapp.com/">whatsapp</a></mat-icon><br><i>@Copyright 2022<br>Learning
             Portal:Content and Certificate Management<br>All rights reserved.</i>
     </p> -->
-    <p style="margin-top:50px;margin-bottom:100px;margin-left:auto;margin-right:auto;font-size:15px"><mat-icon>facebook</mat-icon><mat-icon>whatsapp</mat-icon><br><i>@Copyright 2022,Learning Portal:Content and Certificate Management,All rights reserved.</i></p>
+    <p style="margin-top:50px;margin-bottom:100px;margin-left:auto;margin-right:auto;font-size:15px">
+        <mat-icon>facebook</mat-icon>
+        <mat-icon>whatsapp</mat-icon><br><i>@Copyright 2022,Learning Portal:Content and Certificate Management,All
+            rights reserved.</i>
+    </p>
 
-  
+
 </mat-toolbar>

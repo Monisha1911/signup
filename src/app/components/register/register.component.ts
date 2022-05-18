@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = new FormGroup({
       userName: new FormControl('', [Validators.required, Validators.required]),
       email: new FormControl('', [Validators.email]),
-      RoleType: new FormControl('',[Validators.required]),
+      roleType: new FormControl('',[Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       confirmpassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
 
@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['login']);
     }, (error => {
       console.log(error)
-      this.toast.error({ detail: "Error message", summary: error.message, duration: 3000 })
+      this.toast.error({ detail: "Error message", summary: error.error.message, duration: 3000 })
 
     }))
 

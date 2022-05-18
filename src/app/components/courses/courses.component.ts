@@ -80,9 +80,6 @@ export class CoursesComponent implements OnInit {
         next: (data) => {
           console.log(data);
           this.data = data
-          // this.dataSource = new MatTableDataSource(res);
-          // this.dataSource.paginator = this.paginator;
-          // this.dataSource.sort = this.sort
         }, error: (err) => {
           this.toast.error({ detail: "Error Message", summary: "Error while fetching the Records!!", duration: 3000 })
 

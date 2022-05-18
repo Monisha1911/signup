@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
         return user;
       }
     }, (error => {
-      this.toast.error({ detail: "Error Message", summary: error.message, duration: 3000 })
+      this.toast.error({ detail: "Error Message", summary: error.error.message, duration: 3000 })
     }))
   }
 

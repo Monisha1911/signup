@@ -59,17 +59,12 @@ export class AuthService {
     return this.http.get<any>("https://localhost:5001/api/Authenticate/get courses/");
   }
 
-  // putcourse(data:any,id : number){
-  //   return this.http.put<any>("https://localhost:5001/api/Authenticate/edit" + id,data)
-  // }
+  getusers(){
+    return this.http.get<Register[]>("https://localhost:5001/api/Authenticate/Get All Users/");
+  }
 
-  // url5="https://localhost:5001/api/Authenticate/delete"
 
-  // deletecourse(course_Id){
-  //   return this.http.delete<any>(`${this.url5}/${course_Id}`);
-  // }
 
-  // url6="https://localhost:5001/api/Authenticate/GetByID?Course_ID="
   getCurrentCourse(course_Id){
     return this.http.get('https://localhost:5001/api/Authenticate/GetByID?Course_ID='+course_Id)
   }
@@ -79,20 +74,16 @@ export class AuthService {
        
   }
 
-// url7="https://localhost:5001/api/Authenticate/update Course"
 
   editData(data,course_Id){
-    // return this.http.put(`${this.url7}/${course_Id}`,data)
-    return this.http.put<any>("https://localhost:5001/api/Authenticate/update Course" + course_Id,data)       
+    return this.http.put<any>("https://localhost:5001/api/Authenticate/updateCourse" + course_Id,data)       
   }
 
- 
-
-  GetRolebyToken(token:any){
-    let _token= null;
-    this.tokenres=JSON.parse(atob(_token))
-    return this.tokenres.rolename;
-  }
+  // GetRolebyToken(token:any){
+  //   let _token= null;
+  //   this.tokenres=JSON.parse(atob(_token))
+  //   return this.tokenres.rolename;
+  // }
 
 
 }

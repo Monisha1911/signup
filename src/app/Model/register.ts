@@ -7,29 +7,14 @@ export class Register {
   password: string;
   token: string;
   user: Register;
-  rolename: string;
-
-  
+  rolename: string;  
   role:RoleType;
+  roleType:string;
+
+  constructor(userName , email , roleType){
+    this.userName = userName;
+    this.email=email;
+    this.roleType=roleType;
+  }
 }
 
-// <table >
-//             <tr>
-//               <td>course_Id</td>
-//               <td>coursecategory</td>
-//               <td>coursestartdate</td>
-//               <td>description</td>
-//               <td>format</td>
-//               <td>level</td>
-//               <td>price</td>
-//             </tr>
-//             <tr *ngFor="let row of data">
-//               <td>{{row.course_Id}}</td>
-//               <td>{{row.coursecategory}}</td>
-//               <td>{{row.coursestartdate}}</td>
-//               <td>{{row.description}}</td>
-//               <td>{{row.format}}</td>
-//               <td>{{row.level}}</td>
-//               <td>{{row.price}}</td>
-//             </tr>
-//           </table>
