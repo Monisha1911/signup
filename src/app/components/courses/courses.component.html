@@ -9,7 +9,7 @@
   </button>
   <!-- Learning  -->
   <!-- <div class="username">Welcome: {{userDisplayName}}</div> -->
-  <div class="username">Welcome: {{fab.user}}</div>
+  <div> Learning Portal</div>
 
 
   <div class="example-menu-row" style="margin-left:1200px;">
@@ -23,17 +23,24 @@
             <!-- <div class="uxg-avatar" >SM</div> -->
             <h1 style="text-align:center ;">{{fab.user}}</h1>
             <span style="text-align:center ;">{{fab.email}}</span>
-            <div style="text-align:center ;">Role:{{fab.rolename}}</div>
+            <div style="text-align:center;" class="admins"><a *ngIf="fab.rolename==='Admin'" href="#" routerLink="/admin">Admin Tools</a></div>
           </div>
         </div>
         <mat-divider></mat-divider>
-        <div class="uxg-menu-footer">
-          <button *ngIf="fab.rolename==='Admin'" mat-flat-button color="primary" dense routerLink="/login">
-            <mat-icon>exit_to_app</mat-icon>
-            Logout
+        <div class="uxg-menu-footer" >
+          <button mat-flat-button color="warn" dense routerLink="/login">
+              <mat-icon>exit_to_app</mat-icon>
+              Logout
           </button>
-          <button mat-button color="primary" dense routerLink="/admin">Viewusers</button>
-        </div>
+          <!-- <button *ngIf="fab.rolename==='Admin'" mat-button color="primary" dense routerLink="/admin">
+              <a>Admin Tools</a>
+          </button> -->
+
+          <!-- <a>Admin Tools</a> -->
+          <!-- <button *ngIf="isUser" mat-button color="primary" dense routerLink="/admin" >
+      ViewUsers
+    </button> -->
+      </div>
       </mat-menu>
     </div>
   </div>
@@ -63,30 +70,21 @@
 
 
 
-    <div class="dropdown" style="margin-top:10px;">
-      <button (click)="myFunction()" class="dropbtn" style="margin-right:40px;">
-        <mat-icon>person</mat-icon>
-        <span>Profile</span>
-      </button>
-      <div id="myDropdown" class="dropdown-content">
-        <a href="#" routerLink="/admin">View Profile</a>
-        <a href="#" routerLink="/login">Logout</a>
-        <!-- <a href="#">Link 3</a> -->
-      </div>
 
-    </div>
 
     <mat-divider></mat-divider>
-    <button routerLink="/about" mat-button class="menu-button">
+    <button mat-button class="menu-button">
       <mat-icon>info</mat-icon>
-      <span>About us</span>
+      <!-- <span>About us</span> -->
+      <a href="https://kanini.com/about-us/" >About us</a>
     </button>
 
 
 
     <button mat-button class="menu-button">
       <mat-icon>help</mat-icon>
-      <span>Help</span>
+      <!-- <span>Help</span> -->
+      <a href="https://kanini.com/about-us/" >Help</a>
     </button>
 
   </mat-sidenav>
@@ -105,92 +103,34 @@
 
       <div class="container">
         <div style="margin-top:10px;">
-          <!-- <mat-form-field appearance="standard">
-            <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-          </mat-form-field> -->
 
-          <!-- <div class="container">
-            <table class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>course_Id</th>
-                  <th>coursecategory</th>
-                  <th>coursestartdate</th>
-                  <th>description</th>
-                  <th>format</th>
-                  <th>level</th>
-                  <th>price</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let row of data">
-                  <td><span>{{row.course_Id}}</span></td>
-                  <td><span>{{row.coursecategory}}</span></td>
-                  <td><span>{{row.coursestartdate}}</span></td>
-                  <td><span>{{row.description}}</span></td>
-                  <td><span>{{row.format}}</span></td>
-                  <td><span>{{row.level}}</span></td>
-                  <td><span>{{row.price}}</span></td>
-                 
-                  <td>
-                    <button mat-raised-button color="warning" >Edit</button>
-                    <button class="btn btn-sm btn-danger">
-                      <i class="fa fa-remove"></i>Delete</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div> -->
-
-
-
-
-          <table style="margin-top:30px ;">
-            <thead>
-              <tr class="font">
-                <td>course_Id</td>
-                <td>coursecategory</td>
-                <td>coursestartdate</td>
-                <td>description</td>
-                <td>format</td>
-                <td>level</td>
-                <td>price</td>
-                <td>Action</td>
-              </tr>
-            </thead>
-            <!-- <mat-divider></mat-divider> -->
-            <hr>
-            <tr *ngFor="let row of data">
-              <td>{{row.course_Id}}</td>
-              <td>{{row.coursecategory}}</td>
-              <td>{{row.coursestartdate}}</td>
-              <td>{{row.description}}</td>
-              <td>{{row.format}}</td>
-              <td>{{row.level}}</td>
-              <td>{{row.price}}</td>
-              <!-- <td>
-                <button mat-raised-button color="warning" >Edit</button>
-                <button class="btn btn-sm btn-danger">
-                  <i class="fa fa-remove"></i>Delete</button>
-              </td> -->
+          <table id="users">
+            <tr>
+              <th *ngFor="let row of columns">
+                {{row}}
+              </th>
+            </tr>
+            <tr *ngFor="let course of courses">
+              <td *ngFor="let row of index">
+                {{course[row]}}
+                
+              </td>
               <td>
                 <div class="example-button-row">
-                  <button routerLink="/update/{{row.course_Id}}" style="margin-right: 2px;" mat-flat-button color="white">
+                  <button routerLink="/update/{{course.course_Id}}" style="margin-right: 2px;" mat-flat-button color="white">
                     <mat-icon>edit</mat-icon>
                   </button>
-                  <button mat-flat-button color="white" (click)="deletecourse(row.course_Id)" >
+                  <button mat-flat-button color="white" (click)="deletecourse(course.course_Id)" >
                     <mat-icon>delete</mat-icon>
                   </button>
                 </div>
               </td>
-            </tr>
-          </table>
 
-          <!-- <div class="mat-elevation-z8">
-            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-          </div> -->
+            </tr>
+          </table> 
+          
+
+         
         </div>
       </div>
 

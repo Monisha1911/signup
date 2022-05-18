@@ -1,1 +1,95 @@
-<p>about works!</p>
+<mat-toolbar class="mat-elevation-z8">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+    <!-- Welcome -->
+    <div class="username">Learning Portal</div>
+
+
+    <div class="header">
+        <div style="margin-top: 35px;" class="profile">
+            <button mat-stroked-button [matMenuTriggerFor]="menuHero" color="primary" ng-init>
+                <mat-icon>person</mat-icon>Profile
+            </button>
+            <mat-menu #menuHero="matMenu" class="uxg-user-profile">
+                <div class="uxg-menu-header">
+                    <div class="uxg-avatar-hero-block">
+                        <!-- <div class="uxg-avatar" >SM</div> -->
+                        <h1 style="text-align:center ;">{{fab.user}}</h1>
+                        <span style="text-align:center ;">{{fab.email}}</span>
+                        
+                        <div style="text-align:center;">
+                            <a *ngIf="fab.rolename==='Admin'"  href="/admin" class="name">AdminTools</a>
+                        </div>
+                        <!-- <div  class="admins"><a *ngIf="fab.rolename==='Admin'" href="/admin">Admin Tools</a></div> -->
+                        <a></a>
+
+                        <!-- <div style="text-align:center ;">Role:{{fab.rolename}}</div> -->
+
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="uxg-menu-footer">
+                    <button mat-flat-button color="warn" dense routerLink="/login">
+                        <mat-icon>exit_to_app</mat-icon>
+                        Logout
+                    </button>
+                   
+                </div>
+            </mat-menu>
+        </div>
+    </div>
+
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        <button routerLink="/courses" mat-button class="menu-button">
+            <mat-icon>library_books</mat-icon>
+            <span>Courses</span>
+        </button>
+        <button routerLink="/material" mat-button class="menu-button">
+            <mat-icon>books</mat-icon>
+            <span>Materials</span>
+        </button>
+
+       
+        <mat-divider></mat-divider>
+
+
+        <button routerLink="/about" mat-button class="menu-button">
+            <mat-icon>info</mat-icon>
+            <span>About us</span>
+        </button>
+
+
+        <button mat-button class="menu-button">
+            <mat-icon>help</mat-icon>
+            <span>Help</span>
+        </button>
+       
+
+    </mat-sidenav>
+
+
+    
+   
+</mat-sidenav-container>
+
+
+<mat-toolbar class="footer">
+
+   
+    <p style="margin-top:50px;margin-bottom:100px;margin-left:auto;margin-right:auto;font-size:15px">
+        <mat-icon>facebook</mat-icon>
+        <mat-icon>whatsapp</mat-icon><br><i>@Copyright 2022,Learning Portal:Content and Certificate Management,All
+            rights reserved.</i>
+    </p>
+
+
+</mat-toolbar>

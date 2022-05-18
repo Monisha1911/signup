@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'src/app/Services/auth.service';
 import { NgToastService } from 'ng-angular-popup';
 import { Register } from 'src/app/Model/register';
+import { Courses } from 'src/app/Model/courses';
 
 
 
@@ -36,6 +37,16 @@ export class CoursesComponent implements OnInit {
     this.fab = this.authservice.userValue;
   }
 
+  
+
+  columns = ["Course_Id","Course Category","Course Start Date","Description","Format","Level","Price","Action"];
+
+  index=["course_Id","coursecategory","coursestartdate","description","format","level","price"];
+  
+
+  courses:Courses[]=[];
+
+
   ngOnInit(): void {
     this.userDisplayName = localStorage.getItem('loggedUser');
     this.rolename = localStorage.getItem('user.rolename');
@@ -50,19 +61,13 @@ export class CoursesComponent implements OnInit {
         this.sidenav.open();
       }
     });
+
+    
+
+    
   }
 
-  ngAfterViewInit() {
-    // this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
-    //   if (res.matches) {
-    //     this.sidenav.mode = 'over';
-    //     this.sidenav.close();
-    //   } else {
-    //     this.sidenav.mode = 'side';
-    //     this.sidenav.open();
-    //   }
-    // });
-  }
+  
 
   openDialog() {
     this.dialog.open(DialogComponent, {
@@ -75,22 +80,22 @@ export class CoursesComponent implements OnInit {
   }
 
   getAllProducts() {
-    this.authservice.getcourse()
-      .subscribe({
-        next: (data) => {
-          console.log(data);
-          this.data = data
-        }, error: (err) => {
-          this.toast.error({ detail: "Error Message", summary: "Error while fetching the Records!!", duration: 3000 })
+    this.authservice.getcourse().subscribe(
+      (response)=>{
+        this.courses=response;
+      },
+      (error)=>console.log(error)
+     
+      
+    )
 
-        }
-      })
   }
 
   deletecourse(j) {
 
     this.authservice.deleteData(j).subscribe(data => {
       this.getAllProducts();
+      this.toast.success({ detail: "Success Message", summary: "Course Deleted Successfully", duration: 3000 })
     })
 
   }
@@ -99,21 +104,7 @@ export class CoursesComponent implements OnInit {
 
   }
 
-  // editcourse(row : any){
-  //   this.dialog.open(DialogComponent,{
-  //     width:'30%',
-  //     data:row
-  //   }).afterClosed().subscribe(val=>{
-  //     if(val==='update'){
-  //       this.getAllProducts();
-  //     }
-  //   })
-  // }
 
-  // edit(row, index){
-
-
-  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

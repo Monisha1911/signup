@@ -1,3 +1,36 @@
+h1{
+  text-align: center;
+  color:  white;
+}
+
+#users{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  /* margin-left: 200px; */
+  margin-top: 30px;
+}
+
+#users td, #users th {
+  border:1px solid #ddd;
+  padding: 8px;
+}
+
+#users tr:nth-child(even){background-color: #f2f2f2;}
+
+#users tr:hover {background-color: #ddd;}
+
+#users th{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+
+
+
 /* edit bittuon */
 .font{
   font-size:large;
@@ -189,5 +222,19 @@ margin-right:auto
   
   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
   .show {display:block;}
+
+  .uxg-menu-footer{
+    
+    text-align: center;
+  }
+
+  .admins{
+    margin-top: 10px;
+  }
+
+  .uxg-avatar-hero-block{
+    padding-left: 50px;
+    padding-right: 50px;
+  }
   
   

@@ -8,11 +8,11 @@
         </mat-icon>
     </button>
     <!-- Welcome -->
-    <div class="username">Welcome  {{fab.user}}</div>
+    <div class="username">Learning Portal</div>
 
 
     <div class="header">
-        <div style="margin-top: 35px;">
+        <div style="margin-top: 35px;" class="profile">
             <button mat-stroked-button [matMenuTriggerFor]="menuHero" color="primary" ng-init>
                 <mat-icon>person</mat-icon>Profile
             </button>
@@ -22,31 +22,29 @@
                         <!-- <div class="uxg-avatar" >SM</div> -->
                         <h1 style="text-align:center ;">{{fab.user}}</h1>
                         <span style="text-align:center ;">{{fab.email}}</span>
+                        
+                        <div style="text-align:center;">
+                            <a *ngIf="fab.rolename==='Admin'"  href="/admin" class="name">AdminTools</a>
+                        </div>
+                        <!-- <div  class="admins"><a *ngIf="fab.rolename==='Admin'" href="/admin">Admin Tools</a></div> -->
+                        <a></a>
+
                         <!-- <div style="text-align:center ;">Role:{{fab.rolename}}</div> -->
 
                     </div>
                 </div>
                 <mat-divider></mat-divider>
                 <div class="uxg-menu-footer">
-                    <button mat-flat-button color="primary" dense routerLink="/login">
+                    <button mat-flat-button color="warn" dense routerLink="/login">
                         <mat-icon>exit_to_app</mat-icon>
                         Logout
                     </button>
-                    <button *ngIf="fab.rolename==='Admin'" mat-button color="primary" dense routerLink="/admin">
-                        ViewUsers
-                    </button>
-                    <!-- <button *ngIf="isUser" mat-button color="primary" dense routerLink="/admin" >
-                ViewUsers
-              </button> -->
+                   
                 </div>
             </mat-menu>
         </div>
     </div>
 
-    <!-- <div class="userName">{{userDisplayName}}</div> -->
-
-
-    <!-- <button routerLink="/login" style="margin-left:auto;">Logout </button> -->
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -60,29 +58,21 @@
             <span>Materials</span>
         </button>
 
-        <div class="dropdown" style="margin-top:10px;" *ngIf="fab.rolename==='Admin'">
-            <button (click)="myFunction()" class="dropbtn" style="margin-right:40px;">
-                <mat-icon>person</mat-icon>
-                <span>Profile</span>
-            </button>
-            <div id="myDropdown" class="dropdown-content">
-                <a routerLink="/admin"><i class="fa fa-eye"></i>View Users</a>
-                <!-- <a routerLink="/profile" ><i class="fa fa-pencil"></i>Edit Profile</a> -->
-                <a routerLink="/login"><i class="fa fa-power-off"></i>Logout</a>
-            </div>
-        </div>
+       
         <mat-divider></mat-divider>
 
 
-        <button routerLink="/about" mat-button class="menu-button">
+        <button mat-button class="menu-button">
             <mat-icon>info</mat-icon>
-            <span>About us</span>
+            <!-- <span>About us</span> -->
+            <a href="https://kanini.com/about-us/" >About us</a>
         </button>
 
 
         <button mat-button class="menu-button">
             <mat-icon>help</mat-icon>
-            <span>Help</span>
+            <!-- <span>Help</span> -->
+            <span><a href="https://kanini.com/about-us/" >Help</a></span>
         </button>
         <!-- <button routerLink="/profile" mat-button class="menu-button">
             <ul class="profile-wrapper">

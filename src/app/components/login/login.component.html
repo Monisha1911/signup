@@ -2,17 +2,14 @@
     <mat-card-content>
         <div class="header">
             <h2 style="text-align:center;background-color:rgb(31, 7, 153);color:white;padding:10px" class="h2">LOGIN</h2>
-
-
         </div>
-        <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+
+        <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm" style="margin-top: 15px;">
             <div class="userName-input">
                 <mat-form-field class="full-width" apperance="outline">
                     <mat-label>userName</mat-label>
                     <input formControlName="userName" matInput required />
-                    <!-- <mat-error *ngIf="loginForm.get('userName').errors?.required">
-                        Required userName address
-                    </mat-error> -->
+                  
                 </mat-form-field>
             </div>
             <div>
@@ -24,18 +21,13 @@
                         [attr.aira-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
-                    <!-- <mat-error *ngIf="loginForm.get('password').errors?.required">
-                        Required password
-                    </mat-error> -->
+                    
                 </mat-form-field>
             </div>
             <div>
-                <!-- <button mat-flat-button color="Primary"> Login </button> -->
                 <button  class="button">Login</button>
                 <a [routerLink]="['/register']" class="b1">Register</a>
             </div>
-
-
         </form>
     </mat-card-content>
 </mat-card>
