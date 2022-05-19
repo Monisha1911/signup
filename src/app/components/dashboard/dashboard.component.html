@@ -1,52 +1,55 @@
 <mat-toolbar class="mat-elevation-z8">
     <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
-        <mat-icon *ngIf="!sidenav.opened">
-            menu
-        </mat-icon>
-        <mat-icon *ngIf="sidenav.opened">
-            close
-        </mat-icon>
+      <mat-icon *ngIf="!sidenav.opened">
+        menu
+      </mat-icon>
+      <mat-icon *ngIf="sidenav.opened">
+        close
+      </mat-icon>
     </button>
-    <!-- Welcome -->
-    <div class="username">Learning Portal</div>
-
-
-    <div class="header">
-        <div style="margin-top: 35px;" class="profile">
-            <button mat-stroked-button [matMenuTriggerFor]="menuHero" color="primary" ng-init>
-                <mat-icon>person</mat-icon>Profile
+    <!-- Learning  -->
+    <!-- <div class="username">Welcome: {{userDisplayName}}</div> -->
+    <div> Learning Portal</div>
+  
+  
+    <div class="example-menu-row" style="margin-left:1250px;">
+      <div style="margin-top: 35px;">
+        <button mat-stroked-button [matMenuTriggerFor]="menuHero" color="primary" ng-init>
+          <mat-icon>person</mat-icon>Profile
+        </button>
+        <mat-menu #menuHero="matMenu" class="uxg-user-profile">
+          <div class="uxg-menu-header">
+            <div class="uxg-avatar-hero-block">
+              <!-- <div class="uxg-avatar" >SM</div> -->
+              <h1 style="text-align:center ;">{{fab.user}}</h1>
+              
+              <span style="text-align:center ;">{{fab.email}}</span>
+              <div style="text-align:center;" class="admins"><a *ngIf="fab.rolename==='Admin'" href="/admin"
+                style="color: rgb(31, 31, 114); border-bottom: 1px solid rgb(15, 12, 12);" >Admin Actions</a></div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="uxg-menu-footer">
+            <button mat-flat-button color="warn" dense routerLink="/login">
+              <mat-icon>exit_to_app</mat-icon>
+              Logout
             </button>
-            <mat-menu #menuHero="matMenu" class="uxg-user-profile">
-                <div class="uxg-menu-header">
-                    <div class="uxg-avatar-hero-block">
-                        <!-- <div class="uxg-avatar" >SM</div> -->
-                        <h1 style="text-align:center ;">{{fab.user}}</h1>
-                        <span style="text-align:center ;">{{fab.email}}</span>
-                        
-                        <div style="text-align:center;">
-                            <a *ngIf="fab.rolename==='Admin'"  href="/admin" class="name">AdminTools</a>
-                        </div>
-                        <!-- <div  class="admins"><a *ngIf="fab.rolename==='Admin'" href="/admin">Admin Tools</a></div> -->
-                        <a></a>
-
-                        <!-- <div style="text-align:center ;">Role:{{fab.rolename}}</div> -->
-
-                    </div>
-                </div>
-                <mat-divider></mat-divider>
-                <div class="uxg-menu-footer">
-                    <button mat-flat-button color="warn" dense routerLink="/login">
-                        <mat-icon>exit_to_app</mat-icon>
-                        Logout
-                    </button>
-                   
-                </div>
-            </mat-menu>
-        </div>
+            <!-- <button *ngIf="fab.rolename==='Admin'" mat-button color="primary" dense routerLink="/admin">
+                <a>Admin Tools</a>
+            </button> -->
+  
+            <!-- <a>Admin Tools</a> -->
+            <!-- <button *ngIf="isUser" mat-button color="primary" dense routerLink="/admin" >
+        ViewUsers
+      </button> -->
+          </div>
+        </mat-menu>
+      </div>
     </div>
-
-</mat-toolbar>
-
+  
+    <!-- <button routerLink="/login" style="margin-left:auto;">Logout </button> -->
+  </mat-toolbar>
+  
 <mat-sidenav-container>
     <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
         <button routerLink="/courses" mat-button class="menu-button">
@@ -65,14 +68,14 @@
         <button mat-button class="menu-button">
             <mat-icon>info</mat-icon>
             <!-- <span>About us</span> -->
-            <a href="https://kanini.com/about-us/" >About us</a>
+            <a href="https://kanini.com/about-us/" style="border-bottom: 1px solid rgb(227, 226, 226);  ">About us</a>
         </button>
 
 
         <button mat-button class="menu-button">
             <mat-icon>help</mat-icon>
             <!-- <span>Help</span> -->
-            <span><a href="https://kanini.com/about-us/" >Help</a></span>
+            <span><a href="https://kanini.com/about-us/" style="border-bottom: 1px solid rgb(227, 226, 226);">Help</a></span>
         </button>
         <!-- <button routerLink="/profile" mat-button class="menu-button">
             <ul class="profile-wrapper">

@@ -7,12 +7,10 @@
       close
     </mat-icon>
   </button>
-  <!-- Learning  -->
-  <!-- <div class="username">Welcome: {{userDisplayName}}</div> -->
   <div> Learning Portal</div>
 
 
-  <div class="example-menu-row" style="margin-left:1200px;">
+  <div class="example-menu-row" style="margin-left:1240px;">
     <div style="margin-top: 35px;">
       <button mat-stroked-button [matMenuTriggerFor]="menuHero" color="primary" ng-init>
         <mat-icon>person</mat-icon>Profile
@@ -20,32 +18,25 @@
       <mat-menu #menuHero="matMenu" class="uxg-user-profile">
         <div class="uxg-menu-header">
           <div class="uxg-avatar-hero-block">
-            <!-- <div class="uxg-avatar" >SM</div> -->
             <h1 style="text-align:center ;">{{fab.user}}</h1>
+
             <span style="text-align:center ;">{{fab.email}}</span>
-            <div style="text-align:center;" class="admins"><a *ngIf="fab.rolename==='Admin'" href="#" routerLink="/admin">Admin Tools</a></div>
+            <div style="text-align:center;" class="admins"><a *ngIf="fab.rolename==='Admin'" href="#"
+                routerLink="/admin">Admin Actions</a></div>
           </div>
         </div>
         <mat-divider></mat-divider>
-        <div class="uxg-menu-footer" >
+        <div class="uxg-menu-footer">
           <button mat-flat-button color="warn" dense routerLink="/login">
-              <mat-icon>exit_to_app</mat-icon>
-              Logout
+            <mat-icon>exit_to_app</mat-icon>
+            Logout
           </button>
-          <!-- <button *ngIf="fab.rolename==='Admin'" mat-button color="primary" dense routerLink="/admin">
-              <a>Admin Tools</a>
-          </button> -->
 
-          <!-- <a>Admin Tools</a> -->
-          <!-- <button *ngIf="isUser" mat-button color="primary" dense routerLink="/admin" >
-      ViewUsers
-    </button> -->
-      </div>
+        </div>
       </mat-menu>
     </div>
   </div>
 
-  <!-- <button routerLink="/login" style="margin-left:auto;">Logout </button> -->
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -63,28 +54,17 @@
       <mat-icon>books</mat-icon>
       <span>Materials</span>
     </button>
-    <!-- <button mat-button class="menu-button">
-          <mat-icon>person</mat-icon>
-          <span>Profile</span>
-        </button> -->
-
-
-
-
 
     <mat-divider></mat-divider>
     <button mat-button class="menu-button">
       <mat-icon>info</mat-icon>
-      <!-- <span>About us</span> -->
-      <a href="https://kanini.com/about-us/" >About us</a>
+      <a href="https://kanini.com/about-us/" style="color: white;">About us</a>
     </button>
-
 
 
     <button mat-button class="menu-button">
       <mat-icon>help</mat-icon>
-      <!-- <span>Help</span> -->
-      <a href="https://kanini.com/about-us/" >Help</a>
+      <a href="https://kanini.com/about-us/" style="color: white;">Help</a>
     </button>
 
   </mat-sidenav>
@@ -113,24 +93,28 @@
             <tr *ngFor="let course of courses">
               <td *ngFor="let row of index">
                 {{course[row]}}
-                
+
               </td>
               <td>
                 <div class="example-button-row">
-                  <button routerLink="/update/{{course.course_Id}}" style="margin-right: 2px;" mat-flat-button color="white">
+                  <!-- <button style="margin-right: 2px;" mat-flat-button color="white" (click)="openDialog()"> -->
+                  <!-- <button routerLink="/update/{{course.course_Id}}" style="margin-right: 2px;" mat-flat-button color="white"> -->
+                  <!-- <mat-icon>edit</mat-icon>
+                  </button> -->
+                  <button (click)="editCourse(row)" *ngIf="inVisible">
                     <mat-icon>edit</mat-icon>
                   </button>
-                  <button mat-flat-button color="white" (click)="deletecourse(course.course_Id)" >
+
+                  <button mat-flat-button color="white" (click)="deletecourse(course.course_Id)">
                     <mat-icon>delete</mat-icon>
                   </button>
                 </div>
               </td>
 
             </tr>
-          </table> 
-          
+          </table>
 
-         
+
         </div>
       </div>
 
@@ -139,6 +123,10 @@
 </mat-sidenav-container>
 
 <mat-toolbar class="footer">
-  <p style="margin-top:50px;margin-bottom:100px;margin-left:auto;margin-right:auto;font-size:15px"><mat-icon>facebook</mat-icon><mat-icon>whatsapp</mat-icon><br><i>@Copyright 2022,Learning Portal:Content and Certificate Management,All rights reserved.</i></p>
+  <p style="margin-top:50px;margin-bottom:100px;margin-left:auto;margin-right:auto;font-size:15px">
+    <mat-icon>facebook</mat-icon>
+    <mat-icon>whatsapp</mat-icon><br><i>@Copyright 2022,Learning Portal:Content and Certificate Management,All rights
+      reserved.</i>
+  </p>
 
 </mat-toolbar>

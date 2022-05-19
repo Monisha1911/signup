@@ -19,9 +19,12 @@ import { Courses } from 'src/app/Model/courses';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
+  inVisible=false;
+  row:any;
   fab: Register;
   data: any = [];
   rolename: string;
+  editMode:boolean = false;
 
   displayedColumns: string[] = ['Coursecategory', 'Coursestartdate', 'Description', 'Format', 'Level', 'Price', 'action'];
   dataSource!: MatTableDataSource<any>;
@@ -77,6 +80,8 @@ export class CoursesComponent implements OnInit {
         this.getAllProducts();
       }
     })
+   
+
   }
 
   getAllProducts() {
@@ -99,10 +104,16 @@ export class CoursesComponent implements OnInit {
     })
 
   }
-  edit(row, index) {
 
+  editCourse(row:any){
+    this.dialog.open(DialogComponent,{
+      width: '30%',
+      data:row
+    })
 
   }
+
+  
 
 
 

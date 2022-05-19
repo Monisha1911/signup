@@ -19,7 +19,7 @@ export class DialogComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,private toast: NgToastService,
     private authservice: AuthService,
-    // @Inject(MAT_DIALOG_DATA) public editData: any,
+    @Inject(MAT_DIALOG_DATA) public editCourse: any,
     private dialogRef: MatDialogRef<DialogComponent>,
 
   ) { }
@@ -34,15 +34,16 @@ export class DialogComponent implements OnInit {
       Level: ['', Validators.required],
 
     });
+    // console.log(this.editCourse);
 
-    // if (this.editData) {
+    // if (this.editCourse) {
     //   this.actionBtn = "Update";
-    //   this.courseForm.controls['Coursecategory'].setValue(this.editData.Coursecategory);
-    //   this.courseForm.controls['Coursestartdate'].setValue(this.editData.Coursestartdate);
-    //   this.courseForm.controls['Format'].setValue(this.editData.Format);
-    //   this.courseForm.controls['Price'].setValue(this.editData.Price);
-    //   this.courseForm.controls['Description'].setValue(this.editData.Description);
-    //   this.courseForm.controls['Level'].setValue(this.editData.Level);
+    //   this.courseForm.controls['Coursecategory'].setValue(this.editCourse.Coursecategory);
+    //   this.courseForm.controls['Coursestartdate'].setValue(this.editCourse.Coursestartdate);
+    //   this.courseForm.controls['Format'].setValue(this.editCourse.Format);
+    //   this.courseForm.controls['Price'].setValue(this.editCourse.Price);
+    //   this.courseForm.controls['Description'].setValue(this.editCourse.Description);
+    //   this.courseForm.controls['Level'].setValue(this.editCourse.Level);
 
     // }
 
