@@ -47,32 +47,17 @@ export class DashboardComponent {
 
 
   ngAfterViewInit() {
-    // this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
-    //   if (res.matches) {
-    //     this.sidenav.mode = 'over';
-    //     this.sidenav.close();
-    //   } else {
-    //     this.sidenav.mode = 'side';
-    //     this.sidenav.open();
-    //   }
-    // });
+   
   }
 
-  // profiletag()
-  // {
-  //   if(this.fab.rolename == "Admin"){
-  //     this.isVisible = true;
-  //   }
-  // }
+  
   myFunction(){
   document.getElementById("myDropdown").classList.toggle("show");
 
   }
   
 }
-// function myFunction() {
-//   document.getElementById("myDropdown").classList.toggle("show");
-// }
+
 
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function (event) {

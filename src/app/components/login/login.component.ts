@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   private userSubject:BehaviorSubject<Register>;
   public user: Observable<Register>;
   hide = true;
-  // loading = true;
   data: any;
   fab:Register;
 
@@ -26,9 +25,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
   constructor(private authservice: AuthService, private router: Router, private toast: NgToastService, private http : HttpClient, ) { 
-    // if(this.apiservice.userValue){
-    //   this.router.navigate(['/']);
-    // }
+    
     this.userSubject = new BehaviorSubject<Register>(JSON.parse(localStorage.getItem('user')));
     this.user = this.userSubject.asObservable();
 
@@ -55,10 +52,6 @@ export class LoginComponent implements OnInit {
       if (user) {
         localStorage.setItem('user',JSON.stringify(user));
         this.userSubject.next(user);
-        // localStorage.setItem('loggedUser', this.fab.email);
-
-        
-        
         // sessionStorage.setItem('token', user.token);
         this.toast.success({ detail: "Success Message", summary: "login Succesfull", duration: 2000 })
         this.loginForm.reset();
@@ -72,28 +65,7 @@ export class LoginComponent implements OnInit {
     }))
   }
 
-  // onLogin() {
-  //   this.loginForm.reset();
-
-  //   if(this.loginForm.invalid){
-  //     return;
-  //   }
-  //   this.apiservice.login(this.loginForm.value)
-  //   .pipe(first())
-  //   .subscribe(data=>{
-  //     this.router.navigate(['dashboard']);
-  //   },error=>{
-  //     this.toast.error(error);
-
-  //   });
-  // }
-
-  // getUser(){
-  //  this.authservice.getUserData(this.getUser).subscribe((res)=>{
-  //   console.log(res);
-
-  //  })
-  // }
+  
 
 
 }

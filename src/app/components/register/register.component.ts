@@ -1,4 +1,3 @@
-// import { AuthService } from 'src/app/Services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -23,8 +22,6 @@ export class RegisterComponent implements OnInit {
 
   constructor(private router: Router, private http: HttpClient, private authservice: AuthService
     , private toast: NgToastService,) { }
-
-
 
 
 
@@ -62,8 +59,7 @@ export class RegisterComponent implements OnInit {
 
       }
 
-      //alert("Signup Succesfull");
-      //this.toast.success(detail:"Signup Succesfull")
+      
       this.toast.success({ detail: "Success Message", summary: "Register Succesfull", duration: 2000 })
 
       this.registerForm.reset();
